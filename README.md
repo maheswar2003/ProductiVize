@@ -12,12 +12,12 @@ ProductiVize is an innovative Android app that transforms hourly self-ratings in
 ## 📱 Download
 
 ### **Latest Release**
-**[📥 Download ProductiVize APK](https://github.com/ProductiVize/ProductiVize/releases/latest/download/app-debug.apk)**
+**[📥 Download ProductiVize APK](https://github.com/maheswar2003/ProductiVize/releases/latest/download/app-debug.apk)**
 
 > **Note:** You may need to enable "Install from unknown sources" in your Android settings to install the APK.
 
 ### **All Releases**
-Browse all versions: **[📋 View All Releases](https://github.com/ProductiVize/ProductiVize/releases)**
+Browse all versions: **[📋 View All Releases](https://github.com/maheswar2003/ProductiVize/releases)**
 
 ## 🌟 Features
 
@@ -63,7 +63,7 @@ Browse all versions: **[📋 View All Releases](https://github.com/ProductiVize/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/ProductiVize/ProductiVize.git
+git clone https://github.com/maheswar2003/ProductiVize.git
 ```
 
 2. Open the project in Android Studio

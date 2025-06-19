@@ -20,7 +20,7 @@ After creating the repository, run these commands in your terminal:
 
 ```bash
 # Add GitHub as remote origin
-git remote add origin https://github.com/ProductiVize/ProductiVize.git
+git remote add origin https://github.com/maheswar2003/ProductiVize.git
 
 # Push to GitHub
 git push -u origin main
@@ -28,7 +28,7 @@ git push -u origin main
 
 ## **Step 3: Create First Release**
 
-1. Go to your repository: `https://github.com/ProductiVize/ProductiVize`
+1. Go to your repository: `https://github.com/maheswar2003/ProductiVize`
 2. Click **"Releases"** → **"Create a new release"**
 3. Release settings:
    - **Tag version**: `v1.0.0`
@@ -65,8 +65,8 @@ git push -u origin main
 ## **Step 4: Verify Download Links**
 
 The README.md links should now work:
-- **Direct download**: `https://github.com/ProductiVize/ProductiVize/releases/latest/download/app-debug.apk`
-- **All releases**: `https://github.com/ProductiVize/ProductiVize/releases`
+- **Direct download**: `https://github.com/maheswar2003/ProductiVize/releases/latest/download/app-debug.apk`
+- **All releases**: `https://github.com/maheswar2003/ProductiVize/releases`
 
 ## **🎯 Repository Structure Created:**
 
