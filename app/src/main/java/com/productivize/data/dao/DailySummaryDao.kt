@@ -30,4 +30,10 @@ interface DailySummaryDao {
     
     @Query("SELECT * FROM daily_summaries WHERE achievementPercentage >= 80 ORDER BY date DESC")
     fun getExcellentDays(): Flow<List<DailySummary>>
+    
+    @Query("SELECT * FROM daily_summaries ORDER BY date ASC")
+    suspend fun getAllSummaries(): List<DailySummary>
+    
+    @Query("DELETE FROM daily_summaries")
+    suspend fun deleteAllSummaries()
 } 

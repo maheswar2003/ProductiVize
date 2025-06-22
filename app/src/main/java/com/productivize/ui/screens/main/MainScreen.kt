@@ -14,7 +14,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.productivize.ui.screens.tracker.TrackerScreen
 import com.productivize.ui.screens.insights.InsightsScreen
-import com.productivize.ui.screens.journal.JournalScreen
+import com.productivize.ui.journal.JournalScreen
 import com.productivize.ui.screens.settings.SettingsScreen
 
 data class BottomNavItem(
@@ -106,7 +106,7 @@ fun MainScreen(navController: NavController) {
                 InsightsScreen(navController = navController)
             }
             composable("journal") {
-                JournalScreen(navController = navController)
+                JournalScreen()
             }
             composable("settings") {
                 SettingsScreen(navController = navController)

@@ -1,0 +1,4718 @@
+{
+  "metadata": {
+    "device": {
+      "deviceId": "C:\\Users\\mahes\\.android\\avd\\Pixel_7a.avd",
+      "name": "Pixel 7a",
+      "serialNumber": "emulator-5554",
+      "isOnline": true,
+      "release": "16",
+      "sdk": 36,
+      "featureLevel": 36,
+      "model": "Pixel 7a",
+      "type": "HANDHELD",
+      "isEmulator": true
+    },
+    "filter": "",
+    "projectApplicationIds": [
+      "com.productivize",
+      "com.productivize.test"
+    ]
+  },
+  "logcatMessages": [
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1169,
+        "tid": 1374,
+        "applicationId": "com.android.phone",
+        "processName": "com.android.phone",
+        "tag": "SatelliteController",
+        "timestamp": {
+          "seconds": 1750582178,
+          "nanos": 997000000
+        }
+      },
+      "message": "iisInCarrierRoamingNbIotNtn: satellite is disabled"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "b/387844520",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 862000000
+        }
+      },
+      "message": "getOutlineOffsetX: measured width \u003d 173, mNormalizedIconSize \u003d 159, last updated width \u003d 173"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 1292,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "GrammaticalInflectionUtils",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 864000000
+        }
+      },
+      "message": "AttributionSource: android.content.AttributionSource@c85e29b4 does not have READ_SYSTEM_GRAMMATICAL_GENDER permission."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 1292,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "OptProp",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 865000000
+        }
+      },
+      "message": "Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 1292,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "OptProp",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 865000000
+        }
+      },
+      "message": "Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 1292,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "OptProp",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 865000000
+        }
+      },
+      "message": "Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 1292,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "OptProp",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 865000000
+        }
+      },
+      "message": "Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 815,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "AS.PlaybackActivityMon",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 868000000
+        }
+      },
+      "message": "No piid assigned for invalid/internal port id 15"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 1292,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "OptProp",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 869000000
+        }
+      },
+      "message": "Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 528,
+        "tid": 652,
+        "applicationId": "audioserver",
+        "processName": "audioserver",
+        "tag": "AudioFlinger",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 873000000
+        }
+      },
+      "message": "mixer(0x747c5db2b770) throttle end: throttle time(36)"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 1292,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ActivityTaskManager",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 878000000
+        }
+      },
+      "message": "START u0 {act\u003dandroid.intent.action.MAIN cat\u003d[android.intent.category.LAUNCHER] flg\u003d0x10200000 xflg\u003d0x4 cmp\u003dcom.productivize/.ui.MainActivity bnds\u003d[824,1873][997,2068]} with LAUNCH_MULTIPLE from uid 10180 (sr\u003d39661152) (BAL_ALLOW_VISIBLE_WINDOW) result code\u003d0"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "GrammaticalInflectionUtils",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 885000000
+        }
+      },
+      "message": "AttributionSource: android.content.AttributionSource@c85e29b4 does not have READ_SYSTEM_GRAMMATICAL_GENDER permission."
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "StatsLog",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 890000000
+        }
+      },
+      "message": "LAUNCHER_APP_LAUNCH_TAP"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "StatsLog",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 890000000
+        }
+      },
+      "message": "LAUNCHER_HOTSEAT_RANKED"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 893000000
+        }
+      },
+      "message": "Transition requested (#38): android.os.BinderProxy@44709bf TransitionRequestInfo { type \u003d OPEN, triggerTask \u003d TaskInfo{userId\u003d0 taskId\u003d96 effectiveUid\u003d10217 displayId\u003d0 isRunning\u003dtrue baseIntent\u003dIntent { act\u003dandroid.intent.action.MAIN cat\u003d[android.intent.category.LAUNCHER] flg\u003d0x10200000 cmp\u003dcom.productivize/.ui.MainActivity } baseActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} topActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} origActivity\u003dnull realActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} numActivities\u003d1 lastActiveTime\u003d6152568 supportsMultiWindow\u003dtrue resizeMode\u003d1 isResizeable\u003dtrue minWidth\u003d-1 minHeight\u003d-1 defaultMinSize\u003d220 token\u003dWCT{android.window.IWindowContainerToken$Stub$Proxy@ff1888c} topActivityType\u003d1 pictureInPictureParams\u003dnull shouldDockBigOverlays\u003dfalse launchIntoPipHostTaskId\u003d-1 lastParentTaskIdBeforePip\u003d-1 displayCutoutSafeInsets\u003dRect(0, 118 - 0, 0) topActivityInfo\u003dActivityInfo{9b9fbd5 com.productivize.ui.MainActivity} launchCookies\u003d[android.os.BinderProxy@aa94fea] positionInParent\u003dPoint(0, 0) parentTaskId\u003d-1 isFocused\u003dfalse isVisible\u003dfalse isVisibleRequested\u003dfalse isTopActivityNoDisplay\u003dfalse isSleeping\u003dfalse locusId\u003dnull displayAreaFeatureId\u003d1 isTopActivityTransparent\u003dfalse isActivityStackTransparent\u003dfalse lastNonFullscreenBounds\u003dRect(278, 687 - 803, 1767) capturedLink\u003dnull capturedLinkTimestamp\u003d0 requestedVisibleTypes\u003d-9 topActivityRequestOpenInBrowserEducationTimestamp\u003d0 appCompatTaskInfo\u003dAppCompatTaskInfo { topActivityInSizeCompat\u003dfalse eligibleForLetterboxEducation\u003d false isLetterboxEducationEnabled\u003d true isLetterboxDoubleTapEnabled\u003d false eligibleForUserAspectRatioButton\u003d false topActivityBoundsLetterboxed\u003d false isFromLetterboxDoubleTap\u003d false topActivityLetterboxVerticalPosition\u003d -1 topActivityLetterboxHorizontalPosition\u003d -1 topActivityLetterboxWidth\u003d-1 topActivityLetterboxHeight\u003d-1 topActivityAppBounds\u003dRect(0, 118 - 1080, 2337) isUserFullscreenOverrideEnabled\u003dfalse isSystemFullscreenOverrideEnabled\u003dfalse hasMinAspectRatioOverride\u003dfalse topActivityLetterboxBounds\u003dnull cameraCompatTaskInfo\u003dCameraCompatTaskInfo { freeformCameraCompatMode\u003dinactive}} topActivityMainWindowFrame\u003dnull}, pipChange \u003d null, remoteTransition \u003d RemoteTransition { remoteTransition \u003d android.window.IRemoteTransition$Stub$Proxy@96c82db, appThread \u003d android.app.IApplicationThread$Stub$Proxy@374a178, debugName \u003d QuickstepLaunch }, displayChange \u003d null, flags \u003d 0, debugId \u003d 38 }"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "ShellSplitScreen",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 894000000
+        }
+      },
+      "message": "logExit: no-op, mLoggerSessionId is null"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 896000000
+        }
+      },
+      "message": "RemoteTransition directly requested for (#38) android.os.BinderProxy@44709bf: RemoteTransition { remoteTransition \u003d android.window.IRemoteTransition$Stub$Proxy@96c82db, appThread \u003d android.app.IApplicationThread$Stub$Proxy@374a178, debugName \u003d QuickstepLaunch }"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 897000000
+        }
+      },
+      "message": "Transition (#38): request handled by DefaultMixedHandler"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 537,
+        "tid": 612,
+        "applicationId": "surfaceflinger",
+        "processName": "surfaceflinger",
+        "tag": "BpBinder",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 901000000
+        }
+      },
+      "message": "onLastStrongRef automatically unlinking death recipients: "
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1224,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "QuickstepModelDelegate",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 902000000
+        }
+      },
+      "message": "notifyAppTargetEvent action\u003d1 launchLocation\u003dpredictions/hotseat"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 619,
+        "tid": 693,
+        "applicationId": "cameraserver",
+        "processName": "cameraserver",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 905000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 619,
+        "tid": 693,
+        "applicationId": "cameraserver",
+        "processName": "cameraserver",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 906000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "SplitSelectStateCtor",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 908000000
+        }
+      },
+      "message": "Missing session instanceIds"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "StatsLog",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 908000000
+        }
+      },
+      "message": "LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 466,
+        "tid": 466,
+        "applicationId": "pid-466",
+        "processName": "pid-466",
+        "tag": "Zygote",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 910000000
+        }
+      },
+      "message": "Forked child process 7881"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 760,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ActivityManager",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 912000000
+        }
+      },
+      "message": "Start proc 7881:com.productivize/u0a217 for next-top-activity {com.productivize/com.productivize.ui.MainActivity}"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 760,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ActivityManager",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 913000000
+        }
+      },
+      "message": "ProcessObserver broadcast disabled"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 917000000
+        }
+      },
+      "message": "setLauncherKeepClearAreaHeight: visible\u003dfalse, height\u003d527"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 537,
+        "tid": 537,
+        "applicationId": "surfaceflinger",
+        "processName": "surfaceflinger",
+        "tag": "BpBinder",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 921000000
+        }
+      },
+      "message": "onLastStrongRef automatically unlinking death recipients: "
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 1707,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "CoreBackPreview",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 928000000
+        }
+      },
+      "message": "Window{7e438b9 u0 Splash Screen com.productivize}: Setting back callback OnBackInvokedCallbackInfo{mCallback\u003dandroid.window.IOnBackInvokedCallback$Stub$Proxy@706a775, mPriority\u003d0, mIsAnimationCallback\u003dfalse, mOverrideBehavior\u003d0}"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 958,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "BackgroundInstallControlService",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 929000000
+        }
+      },
+      "message": "Package event received: 0"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 934000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 937000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 937000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 939000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 939000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 939000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 939000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 940000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 940000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 940000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 941000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 941000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 941000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 941000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 941000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 941000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 942000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 944000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 945000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 947000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 948000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 949000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 949000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 949000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 951000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 951000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 953000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 954000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 955000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 958000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 960000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 960000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 961000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 962000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 962000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 962000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 962000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 963000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 963000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 964000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 964000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 967000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 973000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 975000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 978000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 980000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 982000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 985000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 988000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 989000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 989000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 991000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 992000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582179,
+          "nanos": 992000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "om.productivize",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 7000000
+        }
+      },
+      "message": "Late-enabling -Xcheck:jni"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 750,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 25000000
+        }
+      },
+      "message": "Sent Transition (#38) createdAt\u003d06-22 14:19:39.865 via request\u003dTransitionRequestInfo { type \u003d OPEN, triggerTask \u003d TaskInfo{userId\u003d0 taskId\u003d96 effectiveUid\u003d10217 displayId\u003d0 isRunning\u003dtrue baseIntent\u003dIntent { act\u003dandroid.intent.action.MAIN cat\u003d[android.intent.category.LAUNCHER] flg\u003d0x10200000 cmp\u003dcom.productivize/.ui.MainActivity } baseActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} topActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} origActivity\u003dnull realActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} numActivities\u003d1 lastActiveTime\u003d6152568 supportsMultiWindow\u003dtrue resizeMode\u003d1 isResizeable\u003dtrue minWidth\u003d-1 minHeight\u003d-1 defaultMinSize\u003d220 token\u003dWCT{RemoteToken{5d37998 Task{b72c114 #96 type\u003dstandard A\u003d10217:com.productivize}}} topActivityType\u003d1 pictureInPictureParams\u003dnull shouldDockBigOverlays\u003dfalse launchIntoPipHostTaskId\u003d-1 lastParentTaskIdBeforePip\u003d-1 displayCutoutSafeInsets\u003dRect(0, 118 - 0, 0) topActivityInfo\u003dActivityInfo{da745f1 com.productivize.ui.MainActivity} launchCookies\u003d[android.os.BinderProxy@ee65d6] positionInParent\u003dPoint(0, 0) parentTaskId\u003d-1 isFocused\u003dfalse isVisible\u003dfalse isVisibleRequested\u003dfalse isTopActivityNoDisplay\u003dfalse isSleeping\u003dfalse locusId\u003dnull displayAreaFeatureId\u003d1 isTopActivityTransparent\u003dfalse isActivityStackTransparent\u003dfalse lastNonFullscreenBounds\u003dRect(278, 687 - 803, 1767) capturedLink\u003dnull capturedLinkTimestamp\u003d0 requestedVisibleTypes\u003d-9 topActivityRequestOpenInBrowserEducationTimestamp\u003d0 appCompatTaskInfo\u003dAppCompatTaskInfo { topActivityInSizeCompat\u003dfalse eligibleForLetterboxEducation\u003d false isLetterboxEducationEnabled\u003d true isLetterboxDoubleTapEnabled\u003d false eligibleForUserAspectRatioButton\u003d false topActivityBoundsLetterboxed\u003d false isFromLetterboxDoubleTap\u003d false topActivityLetterboxVerticalPosition\u003d -1 topActivityLetterboxHorizontalPosition\u003d -1 topActivityLetterboxWidth\u003d-1 topActivityLetterboxHeight\u003d-1 topActivityAppBounds\u003dRect(0, 118 - 1080, 2337) isUserFullscreenOverrideEnabled\u003dfalse isSystemFullscreenOverrideEnabled\u003dfalse hasMinAspectRatioOverride\u003dfalse topActivityLetterboxBounds\u003dnull cameraCompatTaskInfo\u003dCameraCompatTaskInfo { freeformCameraCompatMode\u003dinactive}} topActivityMainWindowFrame\u003dnull}, pipChange \u003d null, remoteTransition \u003d RemoteTransition { remoteTransition \u003d android.window.IRemoteTransition$Stub$Proxy@20cc057, appThread \u003d android.app.IApplicationThread$Stub$Proxy@c529744, debugName \u003d QuickstepLaunch }, displayChange \u003d null, flags \u003d 0, debugId \u003d 38 }"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 750,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 26000000
+        }
+      },
+      "message": "    startWCT\u003dWindowContainerTransaction { changes\u003d {} hops\u003d [] errorCallbackToken\u003dnull taskFragmentOrganizer\u003dnull }"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 750,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 26000000
+        }
+      },
+      "message": "    info\u003d{id\u003d38 t\u003dOPEN f\u003d0x0 trk\u003d0 r\u003d[0@Point(0, 0)] c\u003d[\n        {WCT{RemoteToken{5d37998 Task{b72c114 #96 type\u003dstandard A\u003d10217:com.productivize}}} m\u003dOPEN f\u003dNONE leash\u003dSurface(name\u003dTask\u003d96)/@0xe59230a sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0 taskParent\u003d-1},\n        {WCT{RemoteToken{4a2697d Task{2b9dbde #1 type\u003dhome}}} m\u003dTO_BACK f\u003dSHOW_WALLPAPER leash\u003dSurface(name\u003dTask\u003d1)/@0x9d456f6 sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0 taskParent\u003d-1},\n        {m\u003dTO_BACK f\u003dIS_WALLPAPER leash\u003dSurface(name\u003dWallpaperWindowToken{e8fff31 showWhenLocked\u003dfalse})/@0x9bb190e sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0}\n    ]}"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 6261,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 30000000
+        }
+      },
+      "message": "onTransitionReady(transaction\u003d3079491552935)"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 35000000
+        }
+      },
+      "message": "onTransitionReady (#38) android.os.BinderProxy@44709bf: {id\u003d38 t\u003dOPEN f\u003d0x0 trk\u003d0 r\u003d[0@Point(0, 0)] c\u003d[\n        {m\u003dOPEN f\u003dNONE leash\u003dSurface(name\u003dTask\u003d96)/@0xeaef08e sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0 taskParent\u003d-1},\n        {m\u003dTO_BACK f\u003dSHOW_WALLPAPER leash\u003dSurface(name\u003dTask\u003d1)/@0x99be0af sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0 taskParent\u003d-1},\n        {m\u003dTO_BACK f\u003dIS_WALLPAPER leash\u003dSurface(name\u003dWallpaperWindowToken{e8fff31 showWhenLocked\u003dfalse})/@0xc2e2cbc sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0}\n    ]}"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 42000000
+        }
+      },
+      "message": "Playing animation for (#38) android.os.BinderProxy@44709bf@0"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 43000000
+        }
+      },
+      "message": " try firstHandler com.android.wm.shell.transition.DefaultMixedHandler@dbcc7b6"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 43000000
+        }
+      },
+      "message": "Mixed transition for opening an intent with a remote transition and PIP or Desktop #38"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 43000000
+        }
+      },
+      "message": "tryAnimateOpenIntentWithRemoteAndPipOrDesktop"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 47000000
+        }
+      },
+      "message": " Delegate animation for (#38) to RemoteTransition { remoteTransition \u003d android.window.IRemoteTransition$Stub$Proxy@96c82db, appThread \u003d android.app.IApplicationThread$Stub$Proxy@374a178, debugName \u003d QuickstepLaunch }"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 49000000
+        }
+      },
+      "message": " animated by firstHandler"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "om.productivize",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 60000000
+        }
+      },
+      "message": "Using CollectorTypeCMC GC."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "om.productivize",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 64000000
+        }
+      },
+      "message": "Unexpected CPU variant for x86: x86_64.\nKnown variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 70000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 73000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 547,
+        "tid": 565,
+        "applicationId": "adbd",
+        "processName": "adbd",
+        "tag": "adbd",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 77000000
+        }
+      },
+      "message": "jdwp connection from 7881"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 547,
+        "tid": 547,
+        "applicationId": "adbd",
+        "processName": "adbd",
+        "tag": "adbd",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 78000000
+        }
+      },
+      "message": "type\u003d1400 audit(0.0:531): avc:  denied  { getattr } for  path\u003d\"/sys/fs/cgroup/apps/uid_10217/pid_7881/cgroup.freeze\" dev\u003d\"cgroup2\" ino\u003d10649 scontext\u003du:r:adbd:s0 tcontext\u003du:object_r:cgroup_v2:s0 tclass\u003dfile permissive\u003d0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "nativeloader",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 106000000
+        }
+      },
+      "message": "Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 110000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 958,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "BackgroundInstallControlService",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 134000000
+        }
+      },
+      "message": "Package event received: 0"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 490,
+        "tid": 573,
+        "applicationId": "android.hardware.graphics.composer3-service.ranchu",
+        "processName": "android.hardware.graphics.composer3-service.ranchu",
+        "tag": "RanchuHwc",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 139000000
+        }
+      },
+      "message": "logCompositionFallbackIfChanged: layer 86 CompositionType fallback from 2 to 1"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 490,
+        "tid": 573,
+        "applicationId": "android.hardware.graphics.composer3-service.ranchu",
+        "processName": "android.hardware.graphics.composer3-service.ranchu",
+        "tag": "RanchuHwc",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 139000000
+        }
+      },
+      "message": "logCompositionFallbackIfChanged: layer 85 CompositionType fallback from 2 to 1"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 141000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "nativeloader",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 145000000
+        }
+      },
+      "message": "Load /data/user/0/com.productivize/code_cache/startup_agents/2890feb1-agent.so using system ns (caller\u003d\u003cunknown\u003e): ok"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "studio.deploy",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 148000000
+        }
+      },
+      "message": "Startup agent attached to VM"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "studio.deploy",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 148000000
+        }
+      },
+      "message": "No existing instrumentation found. Loading instrumentation from instruments-4d3ee822.jar"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "re-initialized\u003e",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 138000000
+        }
+      },
+      "message": "type\u003d1400 audit(0.0:532): avc:  granted  { execute } for  path\u003d\"/data/data/com.productivize/code_cache/startup_agents/2890feb1-agent.so\" dev\u003d\"dm-55\" ino\u003d368671 scontext\u003du:r:untrusted_app:s0:c217,c256,c512,c768 tcontext\u003du:object_r:app_data_file:s0:c217,c256,c512,c768 tclass\u003dfile app\u003dcom.productivize"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "om.productivize",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 156000000
+        }
+      },
+      "message": "hiddenapi: DexFile /data/data/com.productivize/code_cache/.studio/instruments-4d3ee822.jar is in boot class path but is not in a known location"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 157000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "studio.deploy",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 167000000
+        }
+      },
+      "message": "Applying transforms with cached classes"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 179000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 188000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 207000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 221000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 240000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 255000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 271000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 287000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 305000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 322000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 346000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 356000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 375000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 390000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 407000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 422000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 438000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 461000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "om.productivize",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 462000000
+        }
+      },
+      "message": "Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "om.productivize",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 462000000
+        }
+      },
+      "message": "Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled."
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "studio.deploy",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 467000000
+        }
+      },
+      "message": "Registering DispatchJNI"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "studio.deploy",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 469000000
+        }
+      },
+      "message": "Found com/android/tools/deploy/interpreter/JNI"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 0,
+        "tid": 0,
+        "applicationId": "",
+        "processName": "",
+        "tag": "",
+        "timestamp": {
+          "seconds": 0,
+          "nanos": 0
+        }
+      },
+      "message": "---------------------------- PROCESS STARTED (7881) for package com.productivize ----------------------------"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "pid-7881",
+        "processName": "pid-7881",
+        "tag": "CompatChangeReporter",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 479000000
+        }
+      },
+      "message": "Compat change id reported: 242716250; UID 10217; state: ENABLED"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 486000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 501000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 522000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 540000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 562000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 582000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 594000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 609000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 610000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 614000000
+        }
+      },
+      "message": "Transition animation finished (aborted\u003dfalse), notifying core (#38) android.os.BinderProxy@44709bf@0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "b/387844520",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 617000000
+        }
+      },
+      "message": "getOutlineOffsetX: measured width \u003d 173, mNormalizedIconSize \u003d 159, last updated width \u003d 173"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 750,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 619000000
+        }
+      },
+      "message": "Finish Transition (#38): created at 06-22 14:19:39.865 collect-started\u003d0.044ms request-sent\u003d11.387ms started\u003d44.172ms ready\u003d139.527ms sent\u003d159.027ms commit\u003d50.55ms finished\u003d750.324ms"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 627000000
+        }
+      },
+      "message": "Track 0 became idle"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 628000000
+        }
+      },
+      "message": "All active transition animations finished"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "VRI[NexusLauncherActivity]",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 631000000
+        }
+      },
+      "message": "visibilityChanged oldVisibility\u003dtrue newVisibility\u003dfalse"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "NexusLauncherModelDelegate",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 638000000
+        }
+      },
+      "message": "notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget\u003dnull, mSmartspaceActionId\u003d\u0027null\u0027, mEventType\u003d7}"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "nativeloader",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 961000000
+        }
+      },
+      "message": "Configuring clns-9 for other apk /data/app/~~qJP1ydib5Ej9qO5iMvSGog\u003d\u003d/com.productivize-H-V-gx83uSzuSXv1MG6-wg\u003d\u003d/base.apk. target_sdk_version\u003d34, uses_libraries\u003d, library_path\u003d/data/app/~~qJP1ydib5Ej9qO5iMvSGog\u003d\u003d/com.productivize-H-V-gx83uSzuSXv1MG6-wg\u003d\u003d/lib/x86_64, permitted_path\u003d/data:/mnt/expand:/data/user/0/com.productivize"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "om.productivize",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 969000000
+        }
+      },
+      "message": "AssetManager2(0x7b9fb130c1d8) locale list changing from [] to [en-US]"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "om.productivize",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 971000000
+        }
+      },
+      "message": "AssetManager2(0x7b9fb130a8d8) locale list changing from [] to [en-US]"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "GraphicsEnvironment",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 979000000
+        }
+      },
+      "message": "Currently set values for:"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "GraphicsEnvironment",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 979000000
+        }
+      },
+      "message": "  angle_gl_driver_selection_pkgs\u003d[]"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "GraphicsEnvironment",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 979000000
+        }
+      },
+      "message": "  angle_gl_driver_selection_values\u003d[]"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "GraphicsEnvironment",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 979000000
+        }
+      },
+      "message": "com.productivize is not listed in per-application setting"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "GraphicsEnvironment",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 979000000
+        }
+      },
+      "message": "ANGLE allowlist from config: "
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "GraphicsEnvironment",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 979000000
+        }
+      },
+      "message": "com.productivize is not listed in ANGLE allowlist or settings, returning default"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "GraphicsEnvironment",
+        "timestamp": {
+          "seconds": 1750582180,
+          "nanos": 979000000
+        }
+      },
+      "message": "Neither updatable production driver nor prerelease driver is supported."
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "WM-WrkMgrInitializer",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 32000000
+        }
+      },
+      "message": "Initializing WorkManager with default configuration."
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "WM-PackageManagerHelper",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 114000000
+        }
+      },
+      "message": "Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "WM-Schedulers",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 114000000
+        }
+      },
+      "message": "Created SystemJobScheduler and enabled SystemJobService"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 815,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "AppsFilter",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 141000000
+        }
+      },
+      "message": "interaction: PackageSetting{debd2b4 com.productivize/10217} -\u003e PackageSetting{2050dc1 com.google.android.apps.nexuslauncher/10180} BLOCKED"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 815,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "OptProp",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 141000000
+        }
+      },
+      "message": "Cannot read opt property android.window.PROPERTY_COMPAT_ENABLE_FAKE_FOCUS"
+    },
+    {
+      "header": {
+        "logLevel": "ERROR",
+        "pid": 7881,
+        "tid": 7897,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "ashmem",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 142000000
+        }
+      },
+      "message": "Pinning is deprecated since Android Q. Please use trim or other methods."
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 958,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "BackgroundInstallControlService",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 150000000
+        }
+      },
+      "message": "Package event received: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 958,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "BackgroundInstallControlService",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 151000000
+        }
+      },
+      "message": "Package event received: 0"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "om.productivize",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 154000000
+        }
+      },
+      "message": "AssetManager2(0x7b9fb1309618) locale list changing from [] to [en-US]"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7898,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "DisplayManager",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 156000000
+        }
+      },
+      "message": "Choreographer implicitly registered for the refresh rate."
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7898,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "EGL_emulation",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 228000000
+        }
+      },
+      "message": "Opening libGLESv1_CM_emulation.so"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7898,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "EGL_emulation",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 231000000
+        }
+      },
+      "message": "Opening libGLESv2_emulation.so"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 7881,
+        "tid": 7898,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "HWUI",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 244000000
+        }
+      },
+      "message": "Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without..."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 7881,
+        "tid": 7898,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "HWUI",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 244000000
+        }
+      },
+      "message": "Failed to initialize 101010-2 format, error \u003d EGL_SUCCESS"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "DesktopModeFlags",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 247000000
+        }
+      },
+      "message": "Toggle override initialized to: OVERRIDE_UNSET"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 990,
+        "tid": 990,
+        "applicationId": "wpa_supplicant",
+        "processName": "wpa_supplicant",
+        "tag": "wpa_supplicant",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 266000000
+        }
+      },
+      "message": "wlan0: CTRL-EVENT-BEACON-LOSS "
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "HWUI",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 328000000
+        }
+      },
+      "message": "Unknown dataspace 0"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7886,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "om.productivize",
+        "timestamp": {
+          "seconds": 1750582181,
+          "nanos": 792000000
+        }
+      },
+      "message": "Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 1737,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "CoreBackPreview",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 73000000
+        }
+      },
+      "message": "Window{765630c u0 com.productivize/com.productivize.ui.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback\u003dandroid.window.IOnBackInvokedCallback$Stub$Proxy@8413637, mPriority\u003d0, mIsAnimationCallback\u003dfalse, mOverrideBehavior\u003d0}"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 750,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ActivityTaskManager",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 861000000
+        }
+      },
+      "message": "Displayed com.productivize/.ui.MainActivity for user 0: +2s994ms"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7894,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "HWUI",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 875000000
+        }
+      },
+      "message": "Davey! duration\u003d1533ms; Flags\u003d1, FrameTimelineVsyncId\u003d106478, IntendedVsync\u003d6154028472400, Vsync\u003d6154028472400, InputEventId\u003d0, HandleInputStart\u003d6154030809100, AnimationStart\u003d6154030837200, PerformTraversalsStart\u003d6154030872500, DrawStart\u003d6155398965300, FrameDeadline\u003d6154045139066, FrameStartTime\u003d6154030745900, FrameInterval\u003d16666666, WorkloadTarget\u003d16666666, SyncQueued\u003d6155479438100, SyncStart\u003d6155480353900, IssueDrawCommandsStart\u003d6155480557900, SwapBuffers\u003d6155545186300, FrameCompleted\u003d6155562975900, DequeueBufferDuration\u003d25600, QueueBufferDuration\u003d239500, GpuCompleted\u003d6155562975900, SwapBuffersCompleted\u003d6155547162400, DisplayPresentTime\u003d0, CommandSubmissionCompleted\u003d6155545186300, "
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "Choreographer",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 882000000
+        }
+      },
+      "message": "Skipped 84 frames!  The application may be doing too much work on its main thread."
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 469,
+        "tid": 2978,
+        "applicationId": "android.hardware.audio.service",
+        "processName": "android.hardware.audio.service",
+        "tag": "android.hardware.audio@7.1-impl.ranchu",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 912000000
+        }
+      },
+      "message": "threadLoop: entering standby, frames: 1845248"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 469,
+        "tid": 2978,
+        "applicationId": "android.hardware.audio.service",
+        "processName": "android.hardware.audio.service",
+        "tag": "android.hardware.audio@7.1-impl.ranchu",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 912000000
+        }
+      },
+      "message": "~TinyalsaSink: stopping PCM stream"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 469,
+        "tid": 2978,
+        "applicationId": "android.hardware.audio.service",
+        "processName": "android.hardware.audio.service",
+        "tag": "android.hardware.audio@7.1-impl.ranchu",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 913000000
+        }
+      },
+      "message": "~TinyalsaSink: joining consumeThread"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 469,
+        "tid": 7880,
+        "applicationId": "android.hardware.audio.service",
+        "processName": "android.hardware.audio.service",
+        "tag": "android.hardware.audio@7.1-impl.ranchu",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 913000000
+        }
+      },
+      "message": "pcmWrite:259 pcm_writei failed with \u0027cannot read/write stream data: File descriptor in bad state\u0027 (-1)"
+    },
+    {
+      "header": {
+        "logLevel": "ERROR",
+        "pid": 469,
+        "tid": 7880,
+        "applicationId": "android.hardware.audio.service",
+        "processName": "android.hardware.audio.service",
+        "tag": "android.hardware.audio@7.1-impl.ranchu",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 913000000
+        }
+      },
+      "message": "pcmWrite:260 failure: -1"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 469,
+        "tid": 7880,
+        "applicationId": "android.hardware.audio.service",
+        "processName": "android.hardware.audio.service",
+        "tag": "android.hardware.audio@7.1-impl.ranchu",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 913000000
+        }
+      },
+      "message": "consumeThread: exiting"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7892,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "HWUI",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 958000000
+        }
+      },
+      "message": "Davey! duration\u003d1483ms; Flags\u003d0, FrameTimelineVsyncId\u003d106493, IntendedVsync\u003d6154161805728, Vsync\u003d6155561805672, InputEventId\u003d0, HandleInputStart\u003d6155575384600, AnimationStart\u003d6155575438500, PerformTraversalsStart\u003d6155628937700, DrawStart\u003d6155629086100, FrameDeadline\u003d6155595139004, FrameStartTime\u003d6155574581200, FrameInterval\u003d16666666, WorkloadTarget\u003d16666666, SyncQueued\u003d6155634910400, SyncStart\u003d6155635459900, IssueDrawCommandsStart\u003d6155635577700, SwapBuffers\u003d6155636409500, FrameCompleted\u003d6155645888700, DequeueBufferDuration\u003d40800, QueueBufferDuration\u003d542400, GpuCompleted\u003d6155645888700, SwapBuffersCompleted\u003d6155639497000, DisplayPresentTime\u003d0, CommandSubmissionCompleted\u003d6155636409500, "
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 958,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "BackgroundInstallControlService",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 961000000
+        }
+      },
+      "message": "Package event received: 0"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 3742,
+        "tid": 4012,
+        "applicationId": "com.google.android.gms.persistent",
+        "processName": "com.google.android.gms.persistent",
+        "tag": "FontLog",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 968000000
+        }
+      },
+      "message": "(REDACTED) Received query %s, URI %s"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 3742,
+        "tid": 4012,
+        "applicationId": "com.google.android.gms.persistent",
+        "processName": "com.google.android.gms.persistent",
+        "tag": "FontLog",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 968000000
+        }
+      },
+      "message": "(REDACTED) Query [%s] resolved to %s"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 3742,
+        "tid": 4012,
+        "applicationId": "com.google.android.gms.persistent",
+        "processName": "com.google.android.gms.persistent",
+        "tag": "FontLog",
+        "timestamp": {
+          "seconds": 1750582182,
+          "nanos": 977000000
+        }
+      },
+      "message": "(REDACTED) Fetch %s end status %s"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 3742,
+        "tid": 4774,
+        "applicationId": "com.google.android.gms.persistent",
+        "processName": "com.google.android.gms.persistent",
+        "tag": "FontLog",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 2000000
+        }
+      },
+      "message": "(REDACTED) Pulling font file for id \u003d %d, cache size \u003d %d"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 3742,
+        "tid": 4774,
+        "applicationId": "com.google.android.gms.persistent",
+        "processName": "com.google.android.gms.persistent",
+        "tag": "FontLog",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 7000000
+        }
+      },
+      "message": "(REDACTED) Pulling font file for id \u003d %d, cache size \u003d %d"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 860,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ImeTracker",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 61000000
+        }
+      },
+      "message": "com.productivize:640c123e: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 1737,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ImeTracker",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 69000000
+        }
+      },
+      "message": "system_server:ce80994c: onRequestHide at ORIGIN_SERVER reason IME_REQUESTED_CHANGED_LISTENER fromUser false"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1475,
+        "tid": 1475,
+        "applicationId": "com.google.android.inputmethod.latin",
+        "processName": "com.google.android.inputmethod.latin",
+        "tag": "GoogleInputMethodService",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 70000000
+        }
+      },
+      "message": "GoogleInputMethodService.onFinishInput():2043 "
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1475,
+        "tid": 1475,
+        "applicationId": "com.google.android.inputmethod.latin",
+        "processName": "com.google.android.inputmethod.latin",
+        "tag": "Module",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 77000000
+        }
+      },
+      "message": "DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():100 repeatCheckTimes \u003d 0, locked \u003d false"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1475,
+        "tid": 1475,
+        "applicationId": "com.google.android.inputmethod.latin",
+        "processName": "com.google.android.inputmethod.latin",
+        "tag": "GoogleInputMethodService",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 78000000
+        }
+      },
+      "message": "GoogleInputMethodService.onStartInput():1293 onStartInput(EditorInfo{EditorInfo{packageName\u003dcom.productivize, inputType\u003d0, inputTypeString\u003dNULL, enableLearning\u003dfalse, autoCorrection\u003dfalse, autoComplete\u003dfalse, imeOptions\u003d0, privateImeOptions\u003dnull, actionName\u003dUNSPECIFIED, actionLabel\u003dnull, initialSelStart\u003d-1, initialSelEnd\u003d-1, initialCapsMode\u003d0, label\u003dnull, fieldId\u003d0, fieldName\u003dnull, extras\u003dnull, hintText\u003dnull, hintLocales\u003d[]}}, false)"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1475,
+        "tid": 1475,
+        "applicationId": "com.google.android.inputmethod.latin",
+        "processName": "com.google.android.inputmethod.latin",
+        "tag": "Module",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 80000000
+        }
+      },
+      "message": "DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():100 repeatCheckTimes \u003d 1, locked \u003d false"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1475,
+        "tid": 1475,
+        "applicationId": "com.google.android.inputmethod.latin",
+        "processName": "com.google.android.inputmethod.latin",
+        "tag": "EmojiCompatManager",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 80000000
+        }
+      },
+      "message": "EmojiCompatManager.getEmojiCompatIfLoaded():343 EmojiCompat.init() was never called.\njava.lang.IllegalStateException: EmojiCompat is not initialized. Please call EmojiCompat.init() first\n\tat asx.p(PG:6)\n\tat axb.b(PG:13)\n\tat jnr.b(PG:2)\n\tat jnr.c(PG:4)\n\tat jnr.f(PG:3)\n\tat jnx.c(PG:3)\n\tat kif.cz(PG:47)\n\tat lhl.run(PG:1025)\n\tat jaf.execute(PG:12)\n\tat nco.v(PG:13)\n\tat lhn.m(PG:96)\n\tat lhn.k(PG:25)\n\tat kgn.onStartInput(PG:250)\n\tat android.inputmethodservice.InputMethodService.doStartInput(InputMethodService.java:3521)\n\tat android.inputmethodservice.InputMethodService$InputMethodImpl.startInput(InputMethodService.java:879)\n\tat android.inputmethodservice.InputMethodService$InputMethodImpl.dispatchStartInput(InputMethodService.java:908)\n\tat android.inputmethodservice.IInputMethodWrapper.executeMessage(IInputMethodWrapper.java:201)\n\tat com.android.internal.os.HandlerCaller$MyHandler.handleMessage(HandlerCaller.java:44)\n\tat android.os.Handler.dispatchMessage(Handler.java:110)\n\tat android.os.Looper.loopOnce(Looper.java:248)\n\tat android.os.Looper.loop(Looper.java:338)\n\tat android.app.ActivityThread.main(ActivityThread.java:9067)\n\tat java.lang.reflect.Method.invoke(Native Method)\n\tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)\n\tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 1737,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "PackageConfigPersister",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 82000000
+        }
+      },
+      "message": "App-specific configuration not found for packageName: com.productivize and userId: 0"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ImeTracker",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 86000000
+        }
+      },
+      "message": "system_server:ce80994c: onCancelled at PHASE_SERVER_SHOULD_HIDE"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "InsetsController",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 96000000
+        }
+      },
+      "message": "hide(ime(), fromIme\u003dfalse)"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "ImeTracker",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 97000000
+        }
+      },
+      "message": "com.productivize:640c123e: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 121000000
+        }
+      },
+      "message": "setSurface:\n\tmWaitingOnSurfaceValidity: false\n\tmBaseSurface: null"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 122000000
+        }
+      },
+      "message": "mSurface is null and mCurrentBlur is: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "StateManager",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 125000000
+        }
+      },
+      "message": "goToState - fromState: Normal, toState: Normal, partial trace:\n\tat com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme ee19ec8c009da7af1d458e7d1683a6f5bf3b93b44f6674aa108e1a3e78584fe0:4)\n\tat com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme ee19ec8c009da7af1d458e7d1683a6f5bf3b93b44f6674aa108e1a3e78584fe0:1)\n\tat com.android.launcher3.statemanager.StatefulActivity.onStop(go/retraceme ee19ec8c009da7af1d458e7d1683a6f5bf3b93b44f6674aa108e1a3e78584fe0:34)"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "StatsLog",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 129000000
+        }
+      },
+      "message": "LAUNCHER_ONSTOP"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 2348,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "GmsPlayProvider",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 134000000
+        }
+      },
+      "message": "Forcefully shut down the binder channel"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "StatsLog",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 134000000
+        }
+      },
+      "message": "LAUNCHER_GOOGLE_SEARCH_RESTORE_LIST_SIZE_AFTER_ACTIVITY_RESTART"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 958,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "BackgroundInstallControlService",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 142000000
+        }
+      },
+      "message": "Package event received: 0"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 1005,
+        "tid": 1126,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowOnBackDispatcher",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 230000000
+        }
+      },
+      "message": "sendCancelIfRunning: isInProgress\u003dfalse callback\u003dandroid.view.ViewRootImpl$$ExternalSyntheticLambda13@6a671b7"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 1737,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "CoreBackPreview",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 231000000
+        }
+      },
+      "message": "Window{7e438b9 u0 Splash Screen com.productivize EXITING}: Setting back callback null"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 619,
+        "tid": 693,
+        "applicationId": "cameraserver",
+        "processName": "cameraserver",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 237000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 619,
+        "tid": 693,
+        "applicationId": "cameraserver",
+        "processName": "cameraserver",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 237000000
+        }
+      },
+      "message": "Sending oneway calls to frozen process."
+    },
+    {
+      "header": {
+        "logLevel": "ERROR",
+        "pid": 717,
+        "tid": 1895,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "TaskPersister",
+        "timestamp": {
+          "seconds": 1750582183,
+          "nanos": 387000000
+        }
+      },
+      "message": "File error accessing recents directory (directory doesn\u0027t exist?)."
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "WindowOnBackDispatcher",
+        "timestamp": {
+          "seconds": 1750582186,
+          "nanos": 335000000
+        }
+      },
+      "message": "OnBackInvokedCallback is not enabled for the application.\nSet \u0027android:enableOnBackInvokedCallback\u003d\"true\"\u0027 in the application manifest."
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 7881,
+        "tid": 7912,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "ProfileInstaller",
+        "timestamp": {
+          "seconds": 1750582186,
+          "nanos": 553000000
+        }
+      },
+      "message": "Installing profile for com.productivize"
+    },
+    {
+      "header": {
+        "logLevel": "ERROR",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "AndroidRuntime",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 295000000
+        }
+      },
+      "message": "FATAL EXCEPTION: main\nProcess: com.productivize, PID: 7881\njava.lang.IllegalStateException: Context is not a FragmentActivity\n\tat com.productivize.security.BiometricAuthKt.rememberBiometricAuth(BiometricAuth.kt:60)\n\tat com.productivize.ui.journal.JournalScreenKt.JournalScreen(JournalScreen.kt:30)\n\tat com.productivize.ui.screens.main.ComposableSingletons$MainScreenKt$lambda-1$1.invoke(MainScreen.kt:109)\n\tat com.productivize.ui.screens.main.ComposableSingletons$MainScreenKt$lambda-1$1.invoke(MainScreen.kt:108)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:139)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)\n\tat androidx.navigation.compose.NavHostKt$NavHost$14$1.invoke(NavHost.kt:308)\n\tat androidx.navigation.compose.NavHostKt$NavHost$14$1.invoke(NavHost.kt:306)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:109)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)\n\tat androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:248)\n\tat androidx.compose.runtime.saveable.SaveableStateHolderImpl.SaveableStateProvider(SaveableStateHolder.kt:84)\n\tat androidx.navigation.compose.NavBackStackEntryProviderKt.SaveableStateProvider(NavBackStackEntryProvider.kt:65)\n\tat androidx.navigation.compose.NavBackStackEntryProviderKt.access$SaveableStateProvider(NavBackStackEntryProvider.kt:1)\n\tat androidx.navigation.compose.NavBackStackEntryProviderKt$LocalOwnersProvider$1.invoke(NavBackStackEntryProvider.kt:52)\n\tat androidx.navigation.compose.NavBackStackEntryProviderKt$LocalOwnersProvider$1.invoke(NavBackStackEntryProvider.kt:51)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:109)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)\n\tat androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)\n\tat androidx.navigation.compose.NavBackStackEntryProviderKt.LocalOwnersProvider(NavBackStackEntryProvider.kt:47)\n\tat androidx.navigation.compose.NavHostKt$NavHost$14.invoke(NavHost.kt:306)\n\tat androidx.navigation.compose.NavHostKt$NavHost$14.invoke(NavHost.kt:295)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:139)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)\n\tat androidx.compose.animation.AnimatedContentKt$AnimatedContent$6$1$5.invoke(AnimatedContent.kt:755)\n\tat androidx.compose.animation.AnimatedContentKt$AnimatedContent$6$1$5.invoke(AnimatedContent.kt:744)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:118)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)\n\tat androidx.compose.animation.AnimatedVisibilityKt.AnimatedEnterExitImpl(AnimatedVisibility.kt:818)\n\tat androidx.compose.animation.AnimatedContentKt$AnimatedContent$6$1.invoke(AnimatedContent.kt:726)\n\tat androidx.compose.animation.AnimatedContentKt$AnimatedContent$6$1.invoke(AnimatedContent.kt:709)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:109)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)\n\tat androidx.compose.animation.AnimatedContentKt.AnimatedContent(AnimatedContent.kt:768)\n\tat androidx.navigation.compose.NavHostKt.NavHost(NavHost.kt:273)\n\tat androidx.navigation.compose.NavHostKt.NavHost(NavHost.kt:128)\n\tat com.productivize.ui.screens.main.MainScreenKt$MainScreen$2.invoke(MainScreen.kt:97)\n\tat com.productivize.ui.screens.main.MainScreenKt$MainScreen$2.invoke(MainScreen.kt:96)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:118)\n\tat androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$1.invoke(ComposableLambda.jvm.kt:130)"
+    },
+    {
+      "header": {
+        "logLevel": "ERROR",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "AndroidRuntime",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 297000000
+        }
+      },
+      "message": "\tat androidx.compose.runtime.internal.ComposableLambdaImpl$invoke$1.invoke(ComposableLambda.jvm.kt:129)\n\tat androidx.compose.runtime.RecomposeScopeImpl.compose(RecomposeScopeImpl.kt:192)\n\tat androidx.compose.runtime.ComposerImpl.recomposeToGroupEnd(Composer.kt:2556)\n\tat androidx.compose.runtime.ComposerImpl.skipCurrentGroup(Composer.kt:2827)\n\tat androidx.compose.runtime.ComposerImpl.doCompose(Composer.kt:3314)\n\tat androidx.compose.runtime.ComposerImpl.recompose$runtime_release(Composer.kt:3265)\n\tat androidx.compose.runtime.CompositionImpl.recompose(Composition.kt:940)\n\tat androidx.compose.runtime.Recomposer.performRecompose(Recomposer.kt:1155)\n\tat androidx.compose.runtime.Recomposer.access$performRecompose(Recomposer.kt:127)\n\tat androidx.compose.runtime.Recomposer$runRecomposeAndApplyChanges$2$1.invoke(Recomposer.kt:583)\n\tat androidx.compose.runtime.Recomposer$runRecomposeAndApplyChanges$2$1.invoke(Recomposer.kt:551)\n\tat androidx.compose.ui.platform.AndroidUiFrameClock$withFrameNanos$2$callback$1.doFrame(AndroidUiFrameClock.android.kt:41)\n\tat androidx.compose.ui.platform.AndroidUiDispatcher.performFrameDispatch(AndroidUiDispatcher.android.kt:109)\n\tat androidx.compose.ui.platform.AndroidUiDispatcher.access$performFrameDispatch(AndroidUiDispatcher.android.kt:41)\n\tat androidx.compose.ui.platform.AndroidUiDispatcher$dispatchCallback$1.doFrame(AndroidUiDispatcher.android.kt:69)\n\tat android.view.Choreographer$CallbackRecord.run(Choreographer.java:1568)\n\tat android.view.Choreographer$CallbackRecord.run(Choreographer.java:1579)\n\tat android.view.Choreographer.doCallbacks(Choreographer.java:1179)\n\tat android.view.Choreographer.doFrame(Choreographer.java:1104)\n\tat android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:1553)\n\tat android.os.Handler.handleCallback(Handler.java:995)\n\tat android.os.Handler.dispatchMessage(Handler.java:103)\n\tat android.os.Looper.loopOnce(Looper.java:248)\n\tat android.os.Looper.loop(Looper.java:338)\n\tat android.app.ActivityThread.main(ActivityThread.java:9067)\n\tat java.lang.reflect.Method.invoke(Native Method)\n\tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)\n\tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)\n\tSuppressed: kotlinx.coroutines.internal.DiagnosticCoroutineContextException: [androidx.compose.runtime.PausableMonotonicFrameClock@1fecba5, androidx.compose.ui.platform.MotionDurationScaleImpl@2272b7a, StandaloneCoroutine{Cancelling}@448df2b, AndroidUiDispatcher@d484f88]"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 7914,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "DropBoxManagerService",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 301000000
+        }
+      },
+      "message": "add tag\u003ddata_app_crash isTagEnabled\u003dtrue flags\u003d0x2"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 815,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ActivityTaskManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 302000000
+        }
+      },
+      "message": "  Force finishing activity com.productivize/.ui.MainActivity"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 306000000
+        }
+      },
+      "message": "Transition requested (#39): android.os.BinderProxy@5a94c0 TransitionRequestInfo { type \u003d CLOSE, triggerTask \u003d TaskInfo{userId\u003d0 taskId\u003d96 effectiveUid\u003d10217 displayId\u003d0 isRunning\u003dtrue baseIntent\u003dIntent { act\u003dandroid.intent.action.MAIN cat\u003d[android.intent.category.LAUNCHER] flg\u003d0x10200000 cmp\u003dcom.productivize/.ui.MainActivity } baseActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} topActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} origActivity\u003dnull realActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} numActivities\u003d1 lastActiveTime\u003d6153833 supportsMultiWindow\u003dtrue resizeMode\u003d1 isResizeable\u003dtrue minWidth\u003d-1 minHeight\u003d-1 defaultMinSize\u003d220 token\u003dWCT{android.window.IWindowContainerToken$Stub$Proxy@c6405f9} topActivityType\u003d1 pictureInPictureParams\u003dnull shouldDockBigOverlays\u003dfalse launchIntoPipHostTaskId\u003d-1 lastParentTaskIdBeforePip\u003d-1 displayCutoutSafeInsets\u003dRect(0, 0 - 0, 0) topActivityInfo\u003dActivityInfo{7fe993e com.productivize.ui.MainActivity} launchCookies\u003d[android.os.BinderProxy@aa94fea] positionInParent\u003dPoint(0, 0) parentTaskId\u003d-1 isFocused\u003dtrue isVisible\u003dtrue isVisibleRequested\u003dtrue isTopActivityNoDisplay\u003dfalse isSleeping\u003dfalse locusId\u003dnull displayAreaFeatureId\u003d1 isTopActivityTransparent\u003dfalse isActivityStackTransparent\u003dfalse lastNonFullscreenBounds\u003dRect(278, 687 - 803, 1767) capturedLink\u003dnull capturedLinkTimestamp\u003d0 requestedVisibleTypes\u003d-9 topActivityRequestOpenInBrowserEducationTimestamp\u003d0 appCompatTaskInfo\u003dAppCompatTaskInfo { topActivityInSizeCompat\u003dfalse eligibleForLetterboxEducation\u003d false isLetterboxEducationEnabled\u003d true isLetterboxDoubleTapEnabled\u003d false eligibleForUserAspectRatioButton\u003d false topActivityBoundsLetterboxed\u003d false isFromLetterboxDoubleTap\u003d false topActivityLetterboxVerticalPosition\u003d -1 topActivityLetterboxHorizontalPosition\u003d -1 topActivityLetterboxWidth\u003d-1 topActivityLetterboxHeight\u003d-1 topActivityAppBounds\u003dRect(0, 118 - 1080, 2337) isUserFullscreenOverrideEnabled\u003dfalse isSystemFullscreenOverrideEnabled\u003dfalse hasMinAspectRatioOverride\u003dfalse topActivityLetterboxBounds\u003dnull cameraCompatTaskInfo\u003dCameraCompatTaskInfo { freeformCameraCompatMode\u003dinactive}} topActivityMainWindowFrame\u003dnull}, pipChange \u003d null, remoteTransition \u003d null, displayChange \u003d null, flags \u003d 16, debugId \u003d 39 }"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 537,
+        "tid": 849,
+        "applicationId": "surfaceflinger",
+        "processName": "surfaceflinger",
+        "tag": "BpBinder",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 310000000
+        }
+      },
+      "message": "onLastStrongRef automatically unlinking death recipients: "
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 7881,
+        "tid": 7881,
+        "applicationId": "com.productivize",
+        "processName": "com.productivize",
+        "tag": "Process",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 318000000
+        }
+      },
+      "message": "Sending signal. PID: 7881 SIG: 9"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 0,
+        "tid": 0,
+        "applicationId": "",
+        "processName": "",
+        "tag": "",
+        "timestamp": {
+          "seconds": 0,
+          "nanos": 0
+        }
+      },
+      "message": "---------------------------- PROCESS ENDED (7881) for package com.productivize ----------------------------"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 537,
+        "tid": 556,
+        "applicationId": "surfaceflinger",
+        "processName": "surfaceflinger",
+        "tag": "BpBinder",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 322000000
+        }
+      },
+      "message": "onLastStrongRef automatically unlinking death recipients: "
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 850,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "InputDispatcher",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 339000000
+        }
+      },
+      "message": "channel \u0027765630c com.productivize/com.productivize.ui.MainActivity\u0027 ~ Consumer closed input channel or an error occurred.  events\u003d0x9"
+    },
+    {
+      "header": {
+        "logLevel": "ERROR",
+        "pid": 717,
+        "tid": 850,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "InputDispatcher",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 339000000
+        }
+      },
+      "message": "channel \u0027765630c com.productivize/com.productivize.ui.MainActivity\u0027 ~ Channel is unrecoverably broken and will be disposed!"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 850,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 340000000
+        }
+      },
+      "message": "WINDOW DIED Window{765630c u0 com.productivize/com.productivize.ui.MainActivity}"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 1353,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ActivityManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 341000000
+        }
+      },
+      "message": "Process com.productivize (pid 7881) has died: fg  TOP "
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 547,
+        "tid": 547,
+        "applicationId": "adbd",
+        "processName": "adbd",
+        "tag": "adbd",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 342000000
+        }
+      },
+      "message": "Remote process closed the socket (on MSG_PEEK)"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 2587,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 345000000
+        }
+      },
+      "message": "WIN DEATH: Window{765630c u0 com.productivize/com.productivize.ui.MainActivity EXITING}"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 466,
+        "tid": 466,
+        "applicationId": "pid-466",
+        "processName": "pid-466",
+        "tag": "Zygote",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 345000000
+        }
+      },
+      "message": "Process 7881 exited due to signal 9 (Killed)"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 761,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "libprocessgroup",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 352000000
+        }
+      },
+      "message": "Removed cgroup /sys/fs/cgroup/apps/uid_10217/pid_7881"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 976,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ImeTracker",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 352000000
+        }
+      },
+      "message": "com.productivize:eddbff8c: onRequestHide at ORIGIN_SERVER reason HIDE_REMOVE_CLIENT fromUser false"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 352000000
+        }
+      },
+      "message": "Unknown focus tokens, dropping reportFocusChanged"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 976,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ImeTracker",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 352000000
+        }
+      },
+      "message": "com.productivize:eddbff8c: onCancelled at PHASE_SERVER_SHOULD_HIDE"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ActivityManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 361000000
+        }
+      },
+      "message": "setHasOverlayUi called on unknown pid: 7881"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "ViewRootImpl",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 366000000
+        }
+      },
+      "message": "Skipping stats log for color mode"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 958,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "BackgroundInstallControlService",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 369000000
+        }
+      },
+      "message": "Package event received: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 958,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "BackgroundInstallControlService",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 370000000
+        }
+      },
+      "message": "Package event received: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 717,
+        "tid": 958,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "BackgroundInstallControlService",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 370000000
+        }
+      },
+      "message": "Package event received: 0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 375000000
+        }
+      },
+      "message": "setLauncherKeepClearAreaHeight: visible\u003dtrue, height\u003d527"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "NexusLauncherModelDelegate",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 377000000
+        }
+      },
+      "message": "notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget\u003dnull, mSmartspaceActionId\u003d\u0027null\u0027, mEventType\u003d6}"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "BaseDepthController",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 387000000
+        }
+      },
+      "message": "setSurface:\n\tmWaitingOnSurfaceValidity: false\n\tmBaseSurface: Surface(name\u003dcom.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity)/@0xccd441"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "StatsLog",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 408000000
+        }
+      },
+      "message": "LAUNCHER_ONRESUME"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 6103,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 412000000
+        }
+      },
+      "message": "onTransitionReady(transaction\u003d3079491553004)"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 413000000
+        }
+      },
+      "message": "onTransitionReady (#39) android.os.BinderProxy@5a94c0: {id\u003d39 t\u003dCLOSE f\u003d0x10 trk\u003d0 r\u003d[0@Point(0, 0)] c\u003d[\n        {m\u003dTO_FRONT f\u003dSHOW_WALLPAPER|MOVE_TO_TOP leash\u003dSurface(name\u003dTask\u003d1)/@0xe0c539f sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0 taskParent\u003d-1},\n        {m\u003dCLOSE f\u003dNONE leash\u003dSurface(name\u003dTask\u003d96)/@0x8b43cec sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0 taskParent\u003d-1},\n        {m\u003dTO_FRONT f\u003dIS_WALLPAPER leash\u003dSurface(name\u003dWallpaperWindowToken{e8fff31 showWhenLocked\u003dfalse})/@0x9d608b5 sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0}\n    ]}"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 414000000
+        }
+      },
+      "message": "Playing animation for (#39) android.os.BinderProxy@5a94c0@0"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "ShellRecents",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 414000000
+        }
+      },
+      "message": "RecentsTransitionHandler.startAnimation: no controller found"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 416000000
+        }
+      },
+      "message": "Transition doesn\u0027t have explicit remote, search filters for match for {id\u003d39 t\u003dCLOSE f\u003d0x10 trk\u003d0 r\u003d[0@Point(0, 0)] c\u003d[{m\u003dTO_FRONT f\u003dSHOW_WALLPAPER|MOVE_TO_TOP leash\u003dSurface(name\u003dTask\u003d1)/@0xe0c539f sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0 taskParent\u003d-1},{m\u003dCLOSE f\u003dNONE leash\u003dSurface(name\u003dTask\u003d96)/@0x8b43cec sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0 taskParent\u003d-1},{m\u003dTO_FRONT f\u003dIS_WALLPAPER leash\u003dSurface(name\u003dWallpaperWindowToken{e8fff31 showWhenLocked\u003dfalse})/@0x9d608b5 sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0}]}"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 416000000
+        }
+      },
+      "message": " Checking filter Pair{{types\u003d[] flags\u003d0x0] notFlags\u003d0x0 checks\u003d[{atype\u003dundefined independent\u003dtrue modes\u003d[CLOSE,TO_BACK] flags\u003dIN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask\u003dfalse order\u003dANY topActivity\u003dnull launchCookie\u003dnull taskFragmentToken\u003dandroid.os.BinderProxy@d96d594 windowingMode\u003dundefined}]} RemoteTransition { remoteTransition \u003d android.window.IRemoteTransition$Stub$Proxy@2c4383d, appThread \u003d android.app.IApplicationThread$Stub$Proxy@2dcb832, debugName \u003d overlayBackTransition }}"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 416000000
+        }
+      },
+      "message": " Checking filter Pair{{types\u003d[] flags\u003d0x0] notFlags\u003d0x0 checks\u003d[{atype\u003ddream independent\u003dtrue modes\u003d[OPEN,TO_FRONT] flags\u003dNONE mustBeTask\u003dfalse order\u003dANY topActivity\u003dnull launchCookie\u003dnull windowingMode\u003dundefined},{atype\u003dhome independent\u003dtrue modes\u003d[CLOSE,TO_BACK] flags\u003dNONE mustBeTask\u003dfalse order\u003dANY topActivity\u003dnull launchCookie\u003dnull windowingMode\u003dundefined}]} RemoteTransition { remoteTransition \u003d android.window.IRemoteTransition$Stub$Proxy@c5d983, appThread \u003d android.app.IApplicationThread$Stub$Proxy@ad5b700, debugName \u003d LauncherToDream }}"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 418000000
+        }
+      },
+      "message": " Checking filter Pair{{types\u003d[] flags\u003d0x0] notFlags\u003d0x100 checks\u003d[{atype\u003dhome independent\u003dtrue modes\u003d[OPEN,TO_FRONT] flags\u003dNONE mustBeTask\u003dfalse order\u003dTOP topActivity\u003dComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie\u003dnull windowingMode\u003dundefined},{atype\u003dstandard independent\u003dtrue modes\u003d[CLOSE,TO_BACK] flags\u003dNONE mustBeTask\u003dfalse order\u003dANY topActivity\u003dnull launchCookie\u003dnull windowingMode\u003dundefined},{NOT atype\u003dundefined independent\u003dtrue modes\u003d[] flags\u003dNONE mustBeTask\u003dtrue order\u003dANY topActivity\u003dnull launchCookie\u003dnull customAnim\u003dtrue windowingMode\u003dundefined}]} RemoteTransition { remoteTransition \u003d android.window.IRemoteTransition$Stub$Proxy@4c11b39, appThread \u003d android.app.IApplicationThread$Stub$Proxy@39a257e, debugName \u003d QuickstepLaunchHome }}"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "RemoteTransitionHandler",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 418000000
+        }
+      },
+      "message": "Found filterPair{{types\u003d[] flags\u003d0x0] notFlags\u003d0x100 checks\u003d[{atype\u003dhome independent\u003dtrue modes\u003d[OPEN,TO_FRONT] flags\u003dNONE mustBeTask\u003dfalse order\u003dTOP topActivity\u003dComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie\u003dnull windowingMode\u003dundefined},{atype\u003dstandard independent\u003dtrue modes\u003d[CLOSE,TO_BACK] flags\u003dNONE mustBeTask\u003dfalse order\u003dANY topActivity\u003dnull launchCookie\u003dnull windowingMode\u003dundefined},{NOT atype\u003dundefined independent\u003dtrue modes\u003d[] flags\u003dNONE mustBeTask\u003dtrue order\u003dANY topActivity\u003dnull launchCookie\u003dnull customAnim\u003dtrue windowingMode\u003dundefined}]} RemoteTransition { remoteTransition \u003d android.window.IRemoteTransition$Stub$Proxy@4c11b39, appThread \u003d android.app.IApplicationThread$Stub$Proxy@39a257e, debugName \u003d QuickstepLaunchHome }}"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1694,
+        "tid": 1911,
+        "applicationId": "com.google.android.as",
+        "processName": "com.google.android.as",
+        "tag": "AiAiEcho",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 418000000
+        }
+      },
+      "message": "Predicting[0]:  [CONTEXT sampling_count\u003d5 ]"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1694,
+        "tid": 1911,
+        "applicationId": "com.google.android.as",
+        "processName": "com.google.android.as",
+        "tag": "AiAiEcho",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 418000000
+        }
+      },
+      "message": "EchoTargets: \nFiltered by AiAi flag check: \n[CONTEXT ratelimit_period\u003d\"10 SECONDS\" ]"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 419000000
+        }
+      },
+      "message": " Delegate animation for (#39) to RemoteTransition { remoteTransition \u003d android.window.IRemoteTransition$Stub$Proxy@4c11b39, appThread \u003d android.app.IApplicationThread$Stub$Proxy@39a257e, debugName \u003d QuickstepLaunchHome }"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1694,
+        "tid": 1911,
+        "applicationId": "com.google.android.as",
+        "processName": "com.google.android.as",
+        "tag": "AiAiEcho",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 419000000
+        }
+      },
+      "message": "#remoteViewsTwiddler: feature disabled."
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 750,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 425000000
+        }
+      },
+      "message": "Sent Transition (#39) createdAt\u003d06-22 14:19:48.302 via request\u003dTransitionRequestInfo { type \u003d CLOSE, triggerTask \u003d TaskInfo{userId\u003d0 taskId\u003d96 effectiveUid\u003d10217 displayId\u003d0 isRunning\u003dtrue baseIntent\u003dIntent { act\u003dandroid.intent.action.MAIN cat\u003d[android.intent.category.LAUNCHER] flg\u003d0x10200000 cmp\u003dcom.productivize/.ui.MainActivity } baseActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} topActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} origActivity\u003dnull realActivity\u003dComponentInfo{com.productivize/com.productivize.ui.MainActivity} numActivities\u003d1 lastActiveTime\u003d6153833 supportsMultiWindow\u003dtrue resizeMode\u003d1 isResizeable\u003dtrue minWidth\u003d-1 minHeight\u003d-1 defaultMinSize\u003d220 token\u003dWCT{RemoteToken{5d37998 Task{b72c114 #96 type\u003dstandard A\u003d10217:com.productivize}}} topActivityType\u003d1 pictureInPictureParams\u003dnull shouldDockBigOverlays\u003dfalse launchIntoPipHostTaskId\u003d-1 lastParentTaskIdBeforePip\u003d-1 displayCutoutSafeInsets\u003dRect(0, 0 - 0, 0) topActivityInfo\u003dActivityInfo{da745f1 com.productivize.ui.MainActivity} launchCookies\u003d[android.os.BinderProxy@ee65d6] positionInParent\u003dPoint(0, 0) parentTaskId\u003d-1 isFocused\u003dtrue isVisible\u003dtrue isVisibleRequested\u003dtrue isTopActivityNoDisplay\u003dfalse isSleeping\u003dfalse locusId\u003dnull displayAreaFeatureId\u003d1 isTopActivityTransparent\u003dfalse isActivityStackTransparent\u003dfalse lastNonFullscreenBounds\u003dRect(278, 687 - 803, 1767) capturedLink\u003dnull capturedLinkTimestamp\u003d0 requestedVisibleTypes\u003d-9 topActivityRequestOpenInBrowserEducationTimestamp\u003d0 appCompatTaskInfo\u003dAppCompatTaskInfo { topActivityInSizeCompat\u003dfalse eligibleForLetterboxEducation\u003d false isLetterboxEducationEnabled\u003d true isLetterboxDoubleTapEnabled\u003d false eligibleForUserAspectRatioButton\u003d false topActivityBoundsLetterboxed\u003d false isFromLetterboxDoubleTap\u003d false topActivityLetterboxVerticalPosition\u003d -1 topActivityLetterboxHorizontalPosition\u003d -1 topActivityLetterboxWidth\u003d-1 topActivityLetterboxHeight\u003d-1 topActivityAppBounds\u003dRect(0, 118 - 1080, 2337) isUserFullscreenOverrideEnabled\u003dfalse isSystemFullscreenOverrideEnabled\u003dfalse hasMinAspectRatioOverride\u003dfalse topActivityLetterboxBounds\u003dnull cameraCompatTaskInfo\u003dCameraCompatTaskInfo { freeformCameraCompatMode\u003dinactive}} topActivityMainWindowFrame\u003dnull}, pipChange \u003d null, remoteTransition \u003d null, displayChange \u003d null, flags \u003d 16, debugId \u003d 39 }"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1694,
+        "tid": 1911,
+        "applicationId": "com.google.android.as",
+        "processName": "com.google.android.as",
+        "tag": "AiAiEcho",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 426000000
+        }
+      },
+      "message": "#postPredictionTargets: Sending updates to UISurface home with targets# 0 (types\u003d[])"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 750,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 428000000
+        }
+      },
+      "message": "    startWCT\u003dWindowContainerTransaction { changes\u003d {} hops\u003d [] errorCallbackToken\u003dnull taskFragmentOrganizer\u003dnull }"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 750,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 429000000
+        }
+      },
+      "message": "    info\u003d{id\u003d39 t\u003dCLOSE f\u003d0x10 trk\u003d0 r\u003d[0@Point(0, 0)] c\u003d[\n        {WCT{RemoteToken{4a2697d Task{2b9dbde #1 type\u003dhome}}} m\u003dTO_FRONT f\u003dSHOW_WALLPAPER|MOVE_TO_TOP leash\u003dSurface(name\u003dTask\u003d1)/@0x9d456f6 sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0 taskParent\u003d-1},\n        {WCT{RemoteToken{5d37998 Task{b72c114 #96 type\u003dstandard A\u003d10217:com.productivize}}} m\u003dCLOSE f\u003dNONE leash\u003dSurface(name\u003dTask\u003d96)/@0xe59230a sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0 taskParent\u003d-1},\n        {m\u003dTO_FRONT f\u003dIS_WALLPAPER leash\u003dSurface(name\u003dWallpaperWindowToken{e8fff31 showWhenLocked\u003dfalse})/@0x9bb190e sb\u003dRect(0, 0 - 1080, 2400) eb\u003dRect(0, 0 - 1080, 2400) epz\u003dPoint(1080, 2400) d\u003d0}\n    ]}"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "NotificationListener",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 430000000
+        }
+      },
+      "message": "Handling notification state refresh for com.google.android.apps.wellbeing#0"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "NotificationListener",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 430000000
+        }
+      },
+      "message": "Handling notification state refresh for com.android.vending#0"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "NotificationListener",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 430000000
+        }
+      },
+      "message": "Handling notification state refresh for com.android.systemui#0"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "NotificationListener",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 430000000
+        }
+      },
+      "message": "Handling notification state refresh for com.android.systemui#0"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "NotificationListener",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 430000000
+        }
+      },
+      "message": "Handling notification state refresh for android#0"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1224,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "QuickstepModelDelegate",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 433000000
+        }
+      },
+      "message": "notifyAppTargetEvent action\u003d1 launchLocation\u003dworkspace/0/[-1,-1]/[1,1]"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 435000000
+        }
+      },
+      "message": " animated by com.android.wm.shell.transition.RemoteTransitionHandler@84a0e17"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "SsBaseTemplateCard",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 438000000
+        }
+      },
+      "message": "No text view can be set up"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "SsBaseTemplateCard",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 438000000
+        }
+      },
+      "message": "Passed-in item info is null"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "SsBaseTemplateCard",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 438000000
+        }
+      },
+      "message": "Passed-in item info is null"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "SsBaseTemplateCard",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 438000000
+        }
+      },
+      "message": "Passed-in item info is null"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "SsBaseTemplateCard",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 438000000
+        }
+      },
+      "message": "Secondary card pane is null"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "StateManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 439000000
+        }
+      },
+      "message": "createAtomicAnimation - fromState: Background, toState: Normal, partial trace:\n\tat com.android.quickstep.util.ScalingWorkspaceRevealAnim.\u003cinit\u003e(go/retraceme ee19ec8c009da7af1d458e7d1683a6f5bf3b93b44f6674aa108e1a3e78584fe0:39)\n\tat com.android.launcher3.QuickstepTransitionManager.createWallpaperOpenAnimations(go/retraceme ee19ec8c009da7af1d458e7d1683a6f5bf3b93b44f6674aa108e1a3e78584fe0:168)\n\tat com.android.launcher3.QuickstepTransitionManager$WallpaperOpenLauncherAnimationRunner.onAnimationStart(go/retraceme ee19ec8c009da7af1d458e7d1683a6f5bf3b93b44f6674aa108e1a3e78584fe0:17)"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "b/311077782",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 439000000
+        }
+      },
+      "message": "LauncherAnimationRunner.setAnimation"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 860,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ImeTracker",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 452000000
+        }
+      },
+      "message": "com.google.android.apps.nexuslauncher:855b7fb4: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "InsetsController",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 453000000
+        }
+      },
+      "message": "hide(ime(), fromIme\u003dfalse)"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "ImeTracker",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 454000000
+        }
+      },
+      "message": "com.google.android.apps.nexuslauncher:855b7fb4: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1475,
+        "tid": 1475,
+        "applicationId": "com.google.android.inputmethod.latin",
+        "processName": "com.google.android.inputmethod.latin",
+        "tag": "GoogleInputMethodService",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 459000000
+        }
+      },
+      "message": "GoogleInputMethodService.onFinishInput():2043 "
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1475,
+        "tid": 1475,
+        "applicationId": "com.google.android.inputmethod.latin",
+        "processName": "com.google.android.inputmethod.latin",
+        "tag": "Module",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 460000000
+        }
+      },
+      "message": "DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():100 repeatCheckTimes \u003d 0, locked \u003d false"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 976,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ImeTracker",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 464000000
+        }
+      },
+      "message": "system_server:59b5e0a3: onRequestHide at ORIGIN_SERVER reason IME_REQUESTED_CHANGED_LISTENER fromUser false"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1475,
+        "tid": 1475,
+        "applicationId": "com.google.android.inputmethod.latin",
+        "processName": "com.google.android.inputmethod.latin",
+        "tag": "GoogleInputMethodService",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 466000000
+        }
+      },
+      "message": "GoogleInputMethodService.onStartInput():1293 onStartInput(EditorInfo{EditorInfo{packageName\u003dcom.google.android.apps.nexuslauncher, inputType\u003d0, inputTypeString\u003dNULL, enableLearning\u003dfalse, autoCorrection\u003dfalse, autoComplete\u003dfalse, imeOptions\u003d0, privateImeOptions\u003dnull, actionName\u003dUNSPECIFIED, actionLabel\u003dnull, initialSelStart\u003d-1, initialSelEnd\u003d-1, initialCapsMode\u003d0, label\u003dnull, fieldId\u003d0, fieldName\u003dnull, extras\u003dnull, hintText\u003dnull, hintLocales\u003d[]}}, false)"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1475,
+        "tid": 1475,
+        "applicationId": "com.google.android.inputmethod.latin",
+        "processName": "com.google.android.inputmethod.latin",
+        "tag": "Module",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 468000000
+        }
+      },
+      "message": "DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():100 repeatCheckTimes \u003d 1, locked \u003d false"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ImeTracker",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 469000000
+        }
+      },
+      "message": "system_server:59b5e0a3: onCancelled at PHASE_SERVER_SHOULD_HIDE"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 1475,
+        "tid": 1475,
+        "applicationId": "com.google.android.inputmethod.latin",
+        "processName": "com.google.android.inputmethod.latin",
+        "tag": "EmojiCompatManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 469000000
+        }
+      },
+      "message": "EmojiCompatManager.getEmojiCompatIfLoaded():343 EmojiCompat.init() was never called.\njava.lang.IllegalStateException: EmojiCompat is not initialized. Please call EmojiCompat.init() first\n\tat asx.p(PG:6)\n\tat axb.b(PG:13)\n\tat jnr.b(PG:2)\n\tat jnr.c(PG:4)\n\tat jnr.f(PG:3)\n\tat jnx.c(PG:3)\n\tat kif.cz(PG:47)\n\tat lhl.run(PG:1025)\n\tat jaf.execute(PG:12)\n\tat nco.v(PG:13)\n\tat lhn.m(PG:96)\n\tat lhn.k(PG:25)\n\tat kgn.onStartInput(PG:250)\n\tat android.inputmethodservice.InputMethodService.doStartInput(InputMethodService.java:3521)\n\tat android.inputmethodservice.InputMethodService$InputMethodImpl.startInput(InputMethodService.java:879)\n\tat android.inputmethodservice.InputMethodService$InputMethodImpl.dispatchStartInput(InputMethodService.java:908)\n\tat android.inputmethodservice.IInputMethodWrapper.executeMessage(IInputMethodWrapper.java:201)\n\tat com.android.internal.os.HandlerCaller$MyHandler.handleMessage(HandlerCaller.java:44)\n\tat android.os.Handler.dispatchMessage(Handler.java:110)\n\tat android.os.Looper.loopOnce(Looper.java:248)\n\tat android.os.Looper.loop(Looper.java:338)\n\tat android.app.ActivityThread.main(ActivityThread.java:9067)\n\tat java.lang.reflect.Method.invoke(Native Method)\n\tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)\n\tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 976,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "PackageConfigPersister",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 472000000
+        }
+      },
+      "message": "App-specific configuration not found for packageName: com.google.android.apps.nexuslauncher and userId: 0"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 753,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ActivityTaskManager",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 805000000
+        }
+      },
+      "message": "Activity top resumed state loss timeout for ActivityRecord{124727143 u0 com.productivize/.ui.MainActivity t96 f} isExiting}"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1169,
+        "tid": 1374,
+        "applicationId": "com.android.phone",
+        "processName": "com.android.phone",
+        "tag": "SatelliteController",
+        "timestamp": {
+          "seconds": 1750582188,
+          "nanos": 997000000
+        }
+      },
+      "message": "iisInCarrierRoamingNbIotNtn: satellite is disabled"
+    },
+    {
+      "header": {
+        "logLevel": "INFO",
+        "pid": 990,
+        "tid": 990,
+        "applicationId": "wpa_supplicant",
+        "processName": "wpa_supplicant",
+        "tag": "wpa_supplicant",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 197000000
+        }
+      },
+      "message": "wlan0: CTRL-EVENT-BEACON-LOSS "
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "ScalingWorkspaceRevealAnim",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 439000000
+        }
+      },
+      "message": "alpha of workspace at the end of animation: 1.0"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 441000000
+        }
+      },
+      "message": "Transition animation finished (aborted\u003dfalse), notifying core (#39) android.os.BinderProxy@5a94c0@0"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 717,
+        "tid": 750,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 443000000
+        }
+      },
+      "message": "Finish Transition (#39): created at 06-22 14:19:48.302 collect-started\u003d0.045ms request-sent\u003d0.203ms started\u003d15.458ms ready\u003d57.666ms sent\u003d109.069ms commit\u003d28.085ms finished\u003d1140.489ms"
+    },
+    {
+      "header": {
+        "logLevel": "ERROR",
+        "pid": 717,
+        "tid": 815,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "IPCThreadState",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 450000000
+        }
+      },
+      "message": "Binder transaction failure. id: 849494, BR_*: 29189, error: -22 (Invalid argument)"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 815,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "ActivityManager",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 450000000
+        }
+      },
+      "message": "pid 717 system sent binder code 7 with flags 1 to frozen apps and got error -32"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 815,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "WindowManager",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 451000000
+        }
+      },
+      "message": "Exception thrown during dispatchAppVisibility Window{765630c u0 com.productivize/com.productivize.ui.MainActivity EXITING}\nandroid.os.DeadObjectException\n\tat android.os.BinderProxy.transactNative(Native Method)\n\tat android.os.BinderProxy.transact(BinderProxy.java:592)\n\tat android.view.IWindow$Stub$Proxy.dispatchAppVisibility(IWindow.java:557)\n\tat com.android.server.wm.WindowState.sendAppVisibilityToClients(WindowState.java:3151)\n\tat com.android.server.wm.WindowContainer.sendAppVisibilityToClients(WindowContainer.java:1311)\n\tat com.android.server.wm.WindowToken.setClientVisible(WindowToken.java:389)\n\tat com.android.server.wm.ActivityRecord.setClientVisible(ActivityRecord.java:6650)\n\tat com.android.server.wm.ActivityRecord.commitVisibility(ActivityRecord.java:5561)\n\tat com.android.server.wm.Transition.finishTransition(Transition.java:1391)\n\tat com.android.server.wm.TransitionController.finishTransition(TransitionController.java:1029)\n\tat com.android.server.wm.WindowOrganizerController.finishTransition(WindowOrganizerController.java:496)\n\tat android.window.IWindowOrganizerController$Stub.onTransact(IWindowOrganizerController.java:261)\n\tat com.android.server.wm.WindowOrganizerController.onTransact(WindowOrganizerController.java:223)\n\tat android.os.Binder.execTransactInternal(Binder.java:1421)\n\tat android.os.Binder.execTransact(Binder.java:1365)"
+    },
+    {
+      "header": {
+        "logLevel": "WARN",
+        "pid": 717,
+        "tid": 815,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "Process",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 451000000
+        }
+      },
+      "message": "Unable to open /proc/7881/status"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 464000000
+        }
+      },
+      "message": "Track 0 became idle"
+    },
+    {
+      "header": {
+        "logLevel": "VERBOSE",
+        "pid": 1005,
+        "tid": 1064,
+        "applicationId": "com.android.systemui",
+        "processName": "com.android.systemui",
+        "tag": "WindowManagerShell",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 466000000
+        }
+      },
+      "message": "All active transition animations finished"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "RecentsView",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 486000000
+        }
+      },
+      "message": "onTaskRemoved: 96, not handling task stack changes"
+    },
+    {
+      "header": {
+        "logLevel": "DEBUG",
+        "pid": 1172,
+        "tid": 1172,
+        "applicationId": "com.google.android.apps.nexuslauncher",
+        "processName": "com.google.android.apps.nexuslauncher",
+        "tag": "RecentsView",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 486000000
+        }
+      },
+      "message": "onTaskRemoved: 96, not handling task stack changes"
+    },
+    {
+      "header": {
+        "logLevel": "ERROR",
+        "pid": 537,
+        "tid": 537,
+        "applicationId": "surfaceflinger",
+        "processName": "surfaceflinger",
+        "tag": "BpTransactionCompletedListener",
+        "timestamp": {
+          "seconds": 1750582189,
+          "nanos": 489000000
+        }
+      },
+      "message": "Failed to transact (-32)"
+    },
+    {
+      "header": {
+        "logLevel": "ERROR",
+        "pid": 717,
+        "tid": 1895,
+        "applicationId": "system_server",
+        "processName": "system_server",
+        "tag": "TaskPersister",
+        "timestamp": {
+          "seconds": 1750582192,
+          "nanos": 463000000
+        }
+      },
+      "message": "File error accessing recents directory (directory doesn\u0027t exist?)."
+    }
+  ]
+}

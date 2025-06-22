@@ -39,4 +39,10 @@ interface HourLogDao {
     
     @Query("SELECT * FROM hour_logs WHERE rating <= 2 AND rating IS NOT NULL AND date(dateTime) = date(:date)")
     suspend fun getLowHoursForDate(date: String): List<HourLog>
+    
+    @Query("SELECT * FROM hour_logs ORDER BY dateTime ASC")
+    suspend fun getAllHourLogs(): List<HourLog>
+    
+    @Query("DELETE FROM hour_logs")
+    suspend fun deleteAllHourLogs()
 } 

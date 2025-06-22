@@ -35,4 +35,9 @@ val ChartColor1 = DeepBlue
 val ChartColor2 = Teal
 val ChartColor3 = Color(0xFF6C5CE7)
 val ChartColor4 = Color(0xFFFDAA54)
-val ChartColor5 = Color(0xFFFF6B6B) 
+val ChartColor5 = Color(0xFFFF6B6B)
+
+val JournalCardLight = Color(0xFFFFFBFE)
+val JournalCardDark = Color(0xFF1C1B1F)
+val JournalTextLight = Color(0xFF1C1B1F)
+val JournalTextDark = Color(0xFFE6E1E5) 

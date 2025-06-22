@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.*
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -21,6 +22,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -41,6 +44,7 @@ fun TrackerScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
+    var showDatePicker by remember { mutableStateOf(false) }
     
     Scaffold(
         topBar = {
@@ -60,8 +64,8 @@ fun TrackerScreen(
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* Open calendar */ }) {
-                        Icon(Icons.Default.CalendarToday, contentDescription = "Calendar")
+                    IconButton(onClick = { showDatePicker = true }) {
+                        Icon(Icons.Default.CalendarToday, contentDescription = "Select Date")
                     }
                 }
             )
@@ -130,7 +134,7 @@ fun TrackerScreen(
                             StatItem(
                                 label = "Peak Hours",
                                 value = "${uiState.peakHours}",
-                                icon = Icons.Default.TrendingUp
+                                icon = Icons.AutoMirrored.Filled.TrendingUp
                             )
                         }
                     }
@@ -168,6 +172,14 @@ fun TrackerScreen(
                 }
             }
             
+            // Date Navigation Section
+            item {
+                DateNavigationSection(
+                    selectedDate = uiState.selectedDate,
+                    onDateSelected = { date -> viewModel.selectDate(date) }
+                )
+            }
+            
             // Hourly Timeline
             item {
                 Text(
@@ -187,6 +199,101 @@ fun TrackerScreen(
             }
         }
     }
+    
+    // Date Picker Dialog
+    if (showDatePicker) {
+        DatePickerDialog(
+            selectedDate = uiState.selectedDate,
+            onDateSelected = { date ->
+                viewModel.selectDate(date)
+                showDatePicker = false
+            },
+            onDismiss = { showDatePicker = false }
+        )
+    }
+}
+
+@Composable
+fun DateNavigationSection(
+    selectedDate: LocalDate,
+    onDateSelected: (LocalDate) -> Unit
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(
+                onClick = { onDateSelected(selectedDate.minusDays(1)) }
+            ) {
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Previous Day")
+            }
+            
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = selectedDate.format(DateTimeFormatter.ofPattern("MMM d, yyyy")),
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Text(
+                    text = selectedDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault()),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            
+            IconButton(
+                onClick = { onDateSelected(selectedDate.plusDays(1)) },
+                enabled = selectedDate.isBefore(LocalDate.now())
+            ) {
+                Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = "Next Day")
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DatePickerDialog(
+    selectedDate: LocalDate,
+    onDateSelected: (LocalDate) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val datePickerState = rememberDatePickerState(
+        initialSelectedDateMillis = selectedDate.toEpochDay() * 24 * 60 * 60 * 1000
+    )
+    
+    DatePickerDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            TextButton(
+                onClick = {
+                    datePickerState.selectedDateMillis?.let { millis ->
+                        val date = LocalDate.ofEpochDay(millis / (24 * 60 * 60 * 1000))
+                        onDateSelected(date)
+                    }
+                }
+            ) {
+                Text("OK")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    ) {
+        DatePicker(
+            state = datePickerState,
+            modifier = Modifier.padding(16.dp)
+        )
+    }
 }
 
 @Composable
@@ -194,44 +301,51 @@ fun AchievementRing(
     percentage: Float,
     modifier: Modifier = Modifier
 ) {
-    Canvas(modifier = modifier) {
-        val strokeWidth = 20.dp.toPx()
-        val radius = (size.minDimension - strokeWidth) / 2
-        val startAngle = -90f
-        val sweepAngle = (percentage / 100f) * 360f
-        
-        // Background ring
-        drawArc(
-            color = Color.LightGray.copy(alpha = 0.3f),
-            startAngle = startAngle,
-            sweepAngle = 360f,
-            useCenter = false,
-            topLeft = Offset(
-                (size.width - radius * 2) / 2,
-                (size.height - radius * 2) / 2
-            ),
-            size = Size(radius * 2, radius * 2),
-            style = Stroke(strokeWidth, cap = StrokeCap.Round)
-        )
-        
-        // Progress ring
-        drawArc(
-            color = when {
-                percentage >= 80 -> ExcellentGreen
-                percentage >= 60 -> GoodBlue
-                percentage >= 40 -> FairOrange
-                else -> NeedsImprovementRed
-            },
-            startAngle = startAngle,
-            sweepAngle = sweepAngle,
-            useCenter = false,
-            topLeft = Offset(
-                (size.width - radius * 2) / 2,
-                (size.height - radius * 2) / 2
-            ),
-            size = Size(radius * 2, radius * 2),
-            style = Stroke(strokeWidth, cap = StrokeCap.Round)
-        )
+    BoxWithConstraints(modifier = modifier) {
+        val size = minOf(maxWidth, maxHeight)
+        Canvas(modifier = Modifier.size(size)) {
+            val strokeWidth = 20.dp.toPx()
+            val radius = (this.size.minDimension - strokeWidth) / 2
+            val startAngle = -90f
+            val sweepAngle = (percentage / 100f) * 360f
+            
+            // Background ring
+            drawCircle(
+                color = Color.LightGray.copy(alpha = 0.2f),
+                radius = radius,
+                style = Stroke(strokeWidth)
+            )
+            
+            // Progress ring with gradient effect
+            drawArc(
+                color = DeepBlue,
+                startAngle = startAngle,
+                sweepAngle = sweepAngle,
+                useCenter = false,
+                topLeft = Offset(
+                    (this.size.width - radius * 2) / 2,
+                    (this.size.height - radius * 2) / 2
+                ),
+                size = Size(radius * 2, radius * 2),
+                style = Stroke(strokeWidth, cap = StrokeCap.Round)
+            )
+            
+            // Add glow effect for high achievement
+            if (percentage >= 80) {
+                drawArc(
+                    color = DeepBlue.copy(alpha = 0.3f),
+                    startAngle = startAngle,
+                    sweepAngle = sweepAngle,
+                    useCenter = false,
+                    topLeft = Offset(
+                        (this.size.width - radius * 2) / 2,
+                        (this.size.height - radius * 2) / 2
+                    ),
+                    size = Size(radius * 2, radius * 2),
+                    style = Stroke(strokeWidth + 10f, cap = StrokeCap.Round)
+                )
+            }
+        }
     }
 }
 
@@ -269,6 +383,7 @@ fun HourItem(
     hourLog: HourUiState,
     onRatingClick: (Int) -> Unit
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
@@ -331,11 +446,15 @@ fun HourItem(
                         modifier = Modifier
                             .size(32.dp)
                             .clip(CircleShape)
-                            .clickable { onRatingClick(star) },
-                        tint = if (hourLog.rating != null && star <= hourLog.rating) {
-                            Color(android.graphics.Color.parseColor(hourLog.ratingColor))
-                        } else {
-                            MaterialTheme.colorScheme.onSurfaceVariant
+                            .clickable { 
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                                onRatingClick(star) 
+                            },
+                        tint = when {
+                            hourLog.rating != null && star <= hourLog.rating && hourLog.rating >= 4 -> TealRating
+                            hourLog.rating != null && star <= hourLog.rating && hourLog.rating == 3 -> AmberRating
+                            hourLog.rating != null && star <= hourLog.rating -> CoralRating
+                            else -> Color.LightGray
                         }
                     )
                 }

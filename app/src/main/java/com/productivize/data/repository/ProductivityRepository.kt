@@ -40,6 +40,24 @@ class ProductivityRepository @Inject constructor(
         updateDailySummary(now.toLocalDate())
     }
     
+    suspend fun saveHourRatingForDate(date: LocalDate, hour: Int, rating: Int, tags: List<String> = emptyList(), notes: String? = null) {
+        val dateTime = date.atTime(hour, 0, 0, 0)
+        val id = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH"))
+        
+        val hourLog = HourLog(
+            id = id,
+            dateTime = dateTime,
+            hour = hour,
+            rating = rating,
+            tags = tags,
+            notes = notes,
+            updatedAt = System.currentTimeMillis()
+        )
+        
+        hourLogDao.insert(hourLog)
+        updateDailySummary(date)
+    }
+    
     fun getHourLogsForDate(date: LocalDate): Flow<List<HourLog>> {
         return hourLogDao.getHourLogsForDate(date.toString())
     }
@@ -99,6 +117,14 @@ class ProductivityRepository @Inject constructor(
     
     fun getDailySummary(date: LocalDate): Flow<DailySummary?> {
         return dailySummaryDao.observeSummaryForDate(date)
+    }
+    
+    suspend fun getDailySummaryOnce(date: LocalDate): DailySummary? {
+        return dailySummaryDao.getSummaryForDate(date)
+    }
+    
+    suspend fun recalculateDailySummary(date: LocalDate) {
+        updateDailySummary(date)
     }
     
     fun getWeeklySummaries(): Flow<List<DailySummary>> {

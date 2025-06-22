@@ -42,6 +42,8 @@ class TrackerViewModel @Inject constructor(
     
     init {
         loadDataForDate(LocalDate.now())
+        // Ensure achievement is calculated for existing data
+        recalculateAchievement()
     }
     
     private fun loadDataForDate(date: LocalDate) {
@@ -71,6 +73,11 @@ class TrackerViewModel @Inject constructor(
                     )
                 }
                 _uiState.update { it.copy(hourLogs = updatedHourLogs) }
+                
+                // Force update daily summary whenever hour logs change
+                if (hourLogs.any { it.rating != null }) {
+                    refreshDailySummary(date)
+                }
             }
             
             // Collect daily summary
@@ -97,8 +104,10 @@ class TrackerViewModel @Inject constructor(
         viewModelScope.launch {
             // Get existing tags and notes if any
             val existingHourLog = _uiState.value.hourLogs.find { it.hour == hour }
+            val selectedDate = _uiState.value.selectedDate
             
-            repository.saveHourRating(
+            repository.saveHourRatingForDate(
+                date = selectedDate,
                 hour = hour,
                 rating = rating,
                 tags = existingHourLog?.tags ?: emptyList(),
@@ -118,12 +127,42 @@ class TrackerViewModel @Inject constructor(
                     }
                 )
             }
+            
+            // Add a small delay to ensure database operations are complete
+            kotlinx.coroutines.delay(100)
+            
+            // Force refresh the daily summary to ensure it updates
+            refreshDailySummary(selectedDate)
+        }
+    }
+    
+    private suspend fun refreshDailySummary(date: LocalDate) {
+        // Get the latest daily summary after the rating has been saved
+        val summary = repository.getDailySummaryOnce(date)
+        if (summary != null) {
+            _uiState.update { state ->
+                state.copy(
+                    achievementPercentage = summary.achievementPercentage,
+                    averageRating = summary.averageRating,
+                    ratedHours = summary.totalHoursRated,
+                    peakHours = summary.peakHours.size,
+                    insights = summary.insights
+                )
+            }
         }
     }
     
     fun selectDate(date: LocalDate) {
         if (date != _uiState.value.selectedDate) {
             loadDataForDate(date)
+        }
+    }
+    
+    fun recalculateAchievement() {
+        viewModelScope.launch {
+            val selectedDate = _uiState.value.selectedDate
+            repository.recalculateDailySummary(selectedDate)
+            refreshDailySummary(selectedDate)
         }
     }
     
