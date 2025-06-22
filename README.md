@@ -1,4 +1,4 @@
-# ProductiVize 📊
+# ProductiVize 📊 (stage_alpha)
 
 **Your Hourly Productivity, Visualized & Optimized**
 
