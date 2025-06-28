@@ -8,39 +8,47 @@ import kotlin.math.roundToInt
 class AchievementCalculator @Inject constructor() {
     
     /**
-     * Calculates achievement percentage based on rated hours.
-     * Formula: ((sum of ratings - minimum possible) / (maximum possible - minimum possible)) * 100
-     * 
-     * For example, if user rated 10 hours with ratings [5,5,4,4,3,3,2,2,1,1]:
-     * - Sum of ratings = 30
-     * - Minimum possible (all 1s) = 10
-     * - Maximum possible (all 5s) = 50
-     * - Achievement % = ((30 - 10) / (50 - 10)) * 100 = 50%
+     * Calculates achievement percentage based on rated hours and user's achievement threshold.
+     * Only hours meeting or exceeding the threshold count as achievements.
      */
-    fun calculateAchievementPercentage(ratedHours: List<HourLog>): Float {
+    fun calculateAchievementPercentage(
+        ratedHours: List<HourLog>, 
+        achievementThreshold: Int = 3
+    ): Float {
         if (ratedHours.isEmpty()) return 0f
         
         val ratings = ratedHours.mapNotNull { it.rating }
         if (ratings.isEmpty()) return 0f
         
-        val sumOfRatings = ratings.sum()
-        val numberOfRatings = ratings.size
+        // Count hours that meet or exceed the achievement threshold
+        val achievementHours = ratings.count { it >= achievementThreshold }
+        val totalHours = ratings.size
         
-        // Minimum possible score (all 1s)
-        val minPossible = numberOfRatings * 1
-        
-        // Maximum possible score (all 5s)
-        val maxPossible = numberOfRatings * 5
-        
-        // Calculate achievement percentage
-        val achievement = if (maxPossible > minPossible) {
-            ((sumOfRatings - minPossible).toFloat() / (maxPossible - minPossible)) * 100
-        } else {
-            0f
-        }
+        // Calculate percentage of hours that achieved the threshold
+        val achievement = (achievementHours.toFloat() / totalHours) * 100
         
         // Round to 1 decimal place and ensure it's between 0 and 100
-        return max(0f, achievement.coerceAtMost(100f))
+        return achievement.coerceIn(0f, 100f)
+            .let { (it * 10).roundToInt() / 10f }
+    }
+    
+    /**
+     * Calculates goal achievement based on daily goal hours and actual productive hours
+     */
+    fun calculateGoalAchievement(
+        ratedHours: List<HourLog>,
+        dailyGoalHours: Int = 8,
+        achievementThreshold: Int = 3
+    ): Float {
+        if (ratedHours.isEmpty()) return 0f
+        
+        // Count productive hours (meeting achievement threshold)
+        val productiveHours = ratedHours.count { (it.rating ?: 0) >= achievementThreshold }
+        
+        // Calculate goal achievement percentage
+        val goalAchievement = (productiveHours.toFloat() / dailyGoalHours) * 100
+        
+        return goalAchievement.coerceAtMost(100f)
             .let { (it * 10).roundToInt() / 10f }
     }
     

@@ -20,12 +20,16 @@ import com.productivize.ui.journal.components.SmartTextFieldSection
 import com.productivize.ui.journal.components.VoiceInputButton
 import com.productivize.ui.journal.components.AttachmentGallery
 import com.productivize.ui.journal.components.AutoContentSection
+import com.productivize.ui.journal.components.LockToggle
 import com.productivize.security.rememberBiometricAuth
+import com.productivize.ui.screens.settings.SettingsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun JournalScreen(viewModel: JournalViewModel = hiltViewModel()) {
     val entry by viewModel.journalEntry.collectAsState()
+    val settingsViewModel: SettingsViewModel = hiltViewModel()
+    val settings by settingsViewModel.settings.collectAsState()
     val scrollState = rememberScrollState()
     val biometricAuth = rememberBiometricAuth()
 
@@ -34,19 +38,21 @@ fun JournalScreen(viewModel: JournalViewModel = hiltViewModel()) {
             TopAppBar(
                 title = { Text("Daily Journal") },
                 actions = { 
-                    LockToggle(
-                        isLocked = entry.isLocked,
-                        onToggle = {
-                            if (entry.isLocked) {
-                                biometricAuth.authenticate(
-                                    onSuccess = { viewModel.toggleLock() },
-                                    onFailure = { /* Handle failure */ }
-                                )
-                            } else {
-                                viewModel.toggleLock()
+                    if (settings.biometricLockEnabled) {
+                        LockToggle(
+                            isLocked = entry.isLocked,
+                            onToggle = {
+                                if (entry.isLocked) {
+                                    biometricAuth.authenticate(
+                                        onSuccess = { viewModel.toggleLock() },
+                                        onFailure = { /* Handle failure */ }
+                                    )
+                                } else {
+                                    viewModel.toggleLock()
+                                }
                             }
-                        }
-                    )
+                        )
+                    }
                 }
             )
         },

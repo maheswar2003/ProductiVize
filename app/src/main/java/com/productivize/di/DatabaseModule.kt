@@ -11,6 +11,7 @@ import com.productivize.data.repository.ProductivityRepository
 import com.productivize.domain.calculator.AchievementCalculator
 import com.productivize.domain.generator.InsightGenerator
 import com.productivize.utils.DataExporter
+import com.productivize.utils.NotificationHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,14 +25,14 @@ object DatabaseModule {
     
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): ProductiVizeDatabase {
+    fun provideProductiVizeDatabase(@ApplicationContext context: Context): ProductiVizeDatabase {
         return Room.databaseBuilder(
-            context.applicationContext,
+            context,
             ProductiVizeDatabase::class.java,
             "productivize_database"
         )
-            .fallbackToDestructiveMigration()
-            .build()
+        .addMigrations(ProductiVizeDatabase.MIGRATION_4_5)
+        .build()
     }
     
     @Provides
@@ -74,12 +75,19 @@ object DatabaseModule {
     
     @Provides
     @Singleton
+    fun provideNotificationHelper(@ApplicationContext context: Context): NotificationHelper {
+        return NotificationHelper(context)
+    }
+    
+    @Provides
+    @Singleton
     fun provideProductivityRepository(
         hourLogDao: HourLogDao,
         dailySummaryDao: DailySummaryDao,
+        settingsDao: SettingsDao,
         achievementCalculator: AchievementCalculator,
         insightGenerator: InsightGenerator
     ): ProductivityRepository {
-        return ProductivityRepository(hourLogDao, dailySummaryDao, achievementCalculator, insightGenerator)
+        return ProductivityRepository(hourLogDao, dailySummaryDao, settingsDao, achievementCalculator, insightGenerator)
     }
 } 

@@ -2,6 +2,7 @@ package com.productivize.data.repository
 
 import com.productivize.data.dao.HourLogDao
 import com.productivize.data.dao.DailySummaryDao
+import com.productivize.data.dao.SettingsDao
 import com.productivize.data.model.HourLog
 import com.productivize.data.model.DailySummary
 import com.productivize.domain.calculator.AchievementCalculator
@@ -17,6 +18,7 @@ import javax.inject.Singleton
 class ProductivityRepository @Inject constructor(
     private val hourLogDao: HourLogDao,
     private val dailySummaryDao: DailySummaryDao,
+    private val settingsDao: SettingsDao,
     private val achievementCalculator: AchievementCalculator,
     private val insightGenerator: InsightGenerator
 ) {
@@ -69,10 +71,19 @@ class ProductivityRepository @Inject constructor(
         
         if (ratedHours.isEmpty()) return
         
-        val achievementPercentage = achievementCalculator.calculateAchievementPercentage(ratedHours)
+        // Get user settings for personalized calculations
+        val settings = settingsDao.getSettings() ?: com.productivize.data.model.Settings()
+        val achievementThreshold = settings.achievementThreshold
+        
+        val achievementPercentage = achievementCalculator.calculateAchievementPercentage(
+            ratedHours, 
+            achievementThreshold
+        )
         val averageRating = hourLogDao.getAverageRatingForDate(dateStr) ?: 0f
-        val peakHours = hourLogDao.getPeakHoursForDate(dateStr).map { it.hour }
-        val lowHours = hourLogDao.getLowHoursForDate(dateStr).map { it.hour }
+        
+        // Use achievement threshold for peak/low hours
+        val peakHours = ratedHours.filter { (it.rating ?: 0) >= achievementThreshold }.map { it.hour }
+        val lowHours = ratedHours.filter { (it.rating ?: 0) < achievementThreshold }.map { it.hour }
         
         // Extract top tags
         val allTags = ratedHours.flatMap { it.tags }
@@ -82,20 +93,22 @@ class ProductivityRepository @Inject constructor(
             .take(3)
             .map { it.first }
         
-        // Generate insights
+        // Generate insights with user's goal
         val insights = insightGenerator.generateDailyInsights(
             ratedHours,
             achievementPercentage,
             peakHours,
-            lowHours
+            lowHours,
+            settings.dailyGoalHours,
+            achievementThreshold
         )
         
-        // Pre-fill wins and challenges
-        val wins = ratedHours.filter { it.rating ?: 0 >= 4 }
+        // Pre-fill wins and challenges using achievement threshold
+        val wins = ratedHours.filter { (it.rating ?: 0) >= achievementThreshold }
             .mapNotNull { it.notes?.takeIf { notes -> notes.isNotBlank() } }
             .take(3)
         
-        val challenges = ratedHours.filter { it.rating ?: 0 <= 2 }
+        val challenges = ratedHours.filter { (it.rating ?: 0) < achievementThreshold }
             .mapNotNull { it.notes?.takeIf { notes -> notes.isNotBlank() } }
             .take(3)
         

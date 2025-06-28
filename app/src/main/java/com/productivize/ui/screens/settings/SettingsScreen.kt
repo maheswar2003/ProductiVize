@@ -1,7 +1,12 @@
 package com.productivize.ui.screens.settings
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.EventNote
@@ -17,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.productivize.ui.screens.settings.SettingsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,6 +32,11 @@ fun SettingsScreen(
 ) {
     val settings by viewModel.settings.collectAsState()
     val context = LocalContext.current
+    
+    var showDailyGoalDialog by remember { mutableStateOf(false) }
+    var showThresholdDialog by remember { mutableStateOf(false) }
+    var showTimePickerDialog by remember { mutableStateOf(false) }
+    var showClearDataDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -87,6 +98,7 @@ fun SettingsScreen(
                         icon = Icons.AutoMirrored.Filled.EventNote,
                         title = "Journal Reminders",
                         subtitle = "Daily reflection reminder at ${settings.notificationTime}",
+                        onClick = { showTimePickerDialog = true },
                         trailing = {
                             Switch(
                                 checked = settings.journalReminders,
@@ -151,7 +163,7 @@ fun SettingsScreen(
                         subtitle = "Permanently delete all your data",
                         onClick = { 
                             // TODO: Show confirmation dialog
-                            viewModel.clearAllData() 
+                            showClearDataDialog = true 
                         }
                     )
                 }
@@ -163,14 +175,14 @@ fun SettingsScreen(
                     SettingsItem(
                         icon = Icons.Default.Flag,
                         title = "Daily Goal",
-                        subtitle = "Set your daily productivity target: 8 hours",
-                        onClick = { /* TODO: Open goal setting dialog */ }
+                        subtitle = "Set your daily productivity target: ${settings.dailyGoalHours} hours",
+                        onClick = { showDailyGoalDialog = true }
                     )
                     SettingsItem(
                         icon = Icons.AutoMirrored.Filled.TrendingUp,
                         title = "Achievement Threshold",
-                        subtitle = "Minimum rating for achievement: 3 stars",
-                        onClick = { /* TODO: Open threshold setting */ }
+                        subtitle = "Minimum rating for achievement: ${settings.achievementThreshold} stars",
+                        onClick = { showThresholdDialog = true }
                     )
                     SettingsItem(
                         icon = Icons.Default.Vibration,
@@ -193,29 +205,76 @@ fun SettingsScreen(
                         icon = Icons.Default.Info,
                         title = "App Version",
                         subtitle = "ProductiVize v1.0.0",
-                        onClick = { /* TODO: Show version info */ }
+                        onClick = { viewModel.showVersionInfo() }
                     )
                     SettingsItem(
                         icon = Icons.AutoMirrored.Filled.Help,
                         title = "Help & Support",
                         subtitle = "Get help and contact support",
-                        onClick = { /* TODO: Open help */ }
+                        onClick = { viewModel.openHelp() }
                     )
                     SettingsItem(
                         icon = Icons.Default.Star,
                         title = "Rate App",
                         subtitle = "Rate ProductiVize on Google Play",
-                        onClick = { /* TODO: Open Play Store */ }
+                        onClick = { viewModel.rateApp() }
                     )
                     SettingsItem(
                         icon = Icons.Default.Share,
                         title = "Share App",
                         subtitle = "Share ProductiVize with friends",
-                        onClick = { /* TODO: Open share dialog */ }
+                        onClick = { viewModel.shareApp() }
                     )
                 }
             }
         }
+    }
+    
+    // Daily Goal Dialog
+    if (showDailyGoalDialog) {
+        DailyGoalDialog(
+            currentGoal = settings.dailyGoalHours,
+            onGoalSelected = { hours ->
+                viewModel.updateDailyGoal(hours)
+                showDailyGoalDialog = false
+            },
+            onDismiss = { showDailyGoalDialog = false }
+        )
+    }
+    
+    // Achievement Threshold Dialog
+    if (showThresholdDialog) {
+        AchievementThresholdDialog(
+            currentThreshold = settings.achievementThreshold,
+            onThresholdSelected = { threshold ->
+                viewModel.updateAchievementThreshold(threshold)
+                showThresholdDialog = false
+            },
+            onDismiss = { showThresholdDialog = false }
+        )
+    }
+
+    // Time Picker Dialog
+    if (showTimePickerDialog) {
+        TimePickerDialog(
+            currentTime = settings.notificationTime,
+            onTimeSelected = { time ->
+                viewModel.updateNotificationTime(time)
+                showTimePickerDialog = false
+            },
+            onDismiss = { showTimePickerDialog = false }
+        )
+    }
+
+    // Clear Data Dialog
+    if (showClearDataDialog) {
+        ClearDataDialog(
+            onConfirm = {
+                viewModel.clearAllData()
+                showClearDataDialog = false
+            },
+            onDismiss = { showClearDataDialog = false }
+        )
     }
 }
 
@@ -291,4 +350,206 @@ fun SettingsItem(
             trailing?.invoke()
         }
     }
+}
+
+@Composable
+fun DailyGoalDialog(
+    currentGoal: Int,
+    onGoalSelected: (Int) -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Daily Productivity Goal") },
+        text = {
+            Column {
+                Text("How many hours do you want to be productive each day?")
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(4),
+                    modifier = Modifier.height(200.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    items((1..16).toList()) { hours ->
+                        Card(
+                            modifier = Modifier
+                                .aspectRatio(1f)
+                                .clickable { onGoalSelected(hours) },
+                            colors = CardDefaults.cardColors(
+                                containerColor = if (hours == currentGoal) 
+                                    MaterialTheme.colorScheme.primary 
+                                else 
+                                    MaterialTheme.colorScheme.surfaceVariant
+                            )
+                        ) {
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "$hours",
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = if (hours == currentGoal) 
+                                        MaterialTheme.colorScheme.onPrimary 
+                                    else 
+                                        MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
+}
+
+@Composable
+fun AchievementThresholdDialog(
+    currentThreshold: Int,
+    onThresholdSelected: (Int) -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Achievement Threshold") },
+        text = {
+            Column {
+                Text("What's the minimum rating for an hour to count as an achievement?")
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    (1..5).forEach { rating ->
+                        Card(
+                            modifier = Modifier
+                                .size(48.dp)
+                                .clickable { onThresholdSelected(rating) },
+                            colors = CardDefaults.cardColors(
+                                containerColor = if (rating == currentThreshold) 
+                                    MaterialTheme.colorScheme.primary 
+                                else 
+                                    MaterialTheme.colorScheme.surfaceVariant
+                            )
+                        ) {
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Star,
+                                    contentDescription = "$rating stars",
+                                    tint = if (rating == currentThreshold) 
+                                        MaterialTheme.colorScheme.onPrimary 
+                                    else 
+                                        MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+                    }
+                }
+                
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "Selected: $currentThreshold star${if (currentThreshold != 1) "s" else ""} minimum",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
+}
+
+@Composable
+fun TimePickerDialog(
+    currentTime: String,
+    onTimeSelected: (String) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val commonTimes = listOf("18:00", "19:00", "20:00", "21:00", "22:00")
+    
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Journal Reminder Time") },
+        text = {
+            Column {
+                Text("When would you like to be reminded to write in your journal?")
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                commonTimes.forEach { time ->
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp)
+                            .clickable { onTimeSelected(time) },
+                        colors = CardDefaults.cardColors(
+                            containerColor = if (time == currentTime) 
+                                MaterialTheme.colorScheme.primary 
+                            else 
+                                MaterialTheme.colorScheme.surfaceVariant
+                        )
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = time,
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = if (time == currentTime) 
+                                    MaterialTheme.colorScheme.onPrimary 
+                                else 
+                                    MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
+}
+
+@Composable
+fun ClearDataDialog(
+    onConfirm: () -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Clear All Data") },
+        text = {
+            Column {
+                Text("Are you sure you want to permanently delete all your data?")
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onConfirm) {
+                Text("Confirm")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
 } 

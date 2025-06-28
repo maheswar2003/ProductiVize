@@ -10,12 +10,18 @@ class InsightGenerator @Inject constructor() {
         ratedHours: List<HourLog>,
         achievementPercentage: Float,
         peakHours: List<Int>,
-        lowHours: List<Int>
+        lowHours: List<Int>,
+        dailyGoalHours: Int = 8,
+        achievementThreshold: Int = 3
     ): List<String> {
         val insights = mutableListOf<String>()
         
+        // Goal achievement insight
+        val productiveHours = ratedHours.count { (it.rating ?: 0) >= achievementThreshold }
+        insights.add(generateGoalInsight(productiveHours, dailyGoalHours, achievementThreshold))
+        
         // Achievement-based insight
-        insights.add(generateAchievementInsight(achievementPercentage))
+        insights.add(generateAchievementInsight(achievementPercentage, achievementThreshold))
         
         // Peak hours insight
         if (peakHours.isNotEmpty()) {
@@ -24,7 +30,7 @@ class InsightGenerator @Inject constructor() {
         
         // Low hours insight with suggestion
         if (lowHours.isNotEmpty()) {
-            insights.add(generateLowHoursInsight(lowHours))
+            insights.add(generateLowHoursInsight(lowHours, achievementThreshold))
         }
         
         // Pattern insights
@@ -39,12 +45,22 @@ class InsightGenerator @Inject constructor() {
         return insights.take(3) // Return top 3 insights
     }
     
-    private fun generateAchievementInsight(percentage: Float): String {
+    private fun generateGoalInsight(productiveHours: Int, dailyGoalHours: Int, achievementThreshold: Int): String {
+        val goalPercentage = (productiveHours.toFloat() / dailyGoalHours * 100).roundToInt()
         return when {
-            percentage >= 80 -> "Excellent day! You achieved ${percentage.roundToInt()}% productivity. Keep up the outstanding work! 🌟"
-            percentage >= 60 -> "Good progress today with ${percentage.roundToInt()}% achievement. You're on the right track! 💪"
-            percentage >= 40 -> "You achieved ${percentage.roundToInt()}% today. Try to maintain focus during your peak hours tomorrow."
-            else -> "Achievement at ${percentage.roundToInt()}%. Consider breaking tasks into smaller chunks for better momentum."
+            productiveHours >= dailyGoalHours -> "🎯 Goal achieved! You had $productiveHours productive hours (${achievementThreshold}+ stars). Excellent work!"
+            productiveHours >= (dailyGoalHours * 0.8).toInt() -> "🎯 Almost there! $productiveHours/$dailyGoalHours productive hours ($goalPercentage% of goal)"
+            productiveHours >= (dailyGoalHours * 0.5).toInt() -> "🎯 Halfway to your goal: $productiveHours/$dailyGoalHours productive hours"
+            else -> "🎯 $productiveHours/$dailyGoalHours productive hours today. Small steps lead to big achievements!"
+        }
+    }
+    
+    private fun generateAchievementInsight(percentage: Float, threshold: Int): String {
+        return when {
+            percentage >= 80 -> "⭐ Outstanding! ${percentage.roundToInt()}% of your hours met the ${threshold}-star standard!"
+            percentage >= 60 -> "💪 Good progress with ${percentage.roundToInt()}% of hours above ${threshold} stars!"
+            percentage >= 40 -> "${percentage.roundToInt()}% achievement rate. Focus on your strengths tomorrow!"
+            else -> "${percentage.roundToInt()}% achievement today. Every ${threshold}-star hour counts toward progress!"
         }
     }
     
@@ -53,7 +69,7 @@ class InsightGenerator @Inject constructor() {
         return "Your peak performance hours: $hourRanges. Schedule important tasks during these times! ⚡"
     }
     
-    private fun generateLowHoursInsight(lowHours: List<Int>): String {
+    private fun generateLowHoursInsight(lowHours: List<Int>, threshold: Int): String {
         val suggestions = mapOf(
             (11..13) to "post-lunch dip → try a 10-min walk or light stretching",
             (14..16) to "afternoon slump → consider a healthy snack or brief meditation",

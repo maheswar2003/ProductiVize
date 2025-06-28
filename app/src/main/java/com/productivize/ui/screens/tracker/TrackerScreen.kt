@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.productivize.ui.theme.*
+import com.productivize.ui.screens.settings.SettingsViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
@@ -43,6 +44,8 @@ fun TrackerScreen(
     viewModel: TrackerViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val settingsViewModel: SettingsViewModel = hiltViewModel()
+    val settings by settingsViewModel.settings.collectAsState()
     val context = LocalContext.current
     var showDatePicker by remember { mutableStateOf(false) }
     
@@ -192,6 +195,7 @@ fun TrackerScreen(
             items(uiState.hourLogs) { hourLog ->
                 HourItem(
                     hourLog = hourLog,
+                    vibrationEnabled = settings.vibrationEnabled,
                     onRatingClick = { rating ->
                         viewModel.updateHourRating(hourLog.hour, rating)
                     }
@@ -230,7 +234,8 @@ fun DateNavigationSection(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(
-                onClick = { onDateSelected(selectedDate.minusDays(1)) }
+                onClick = { onDateSelected(selectedDate.minusDays(1)) },
+                enabled = selectedDate.isAfter(LocalDate.now().minusYears(1))
             ) {
                 Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Previous Day")
             }
@@ -266,7 +271,7 @@ fun DatePickerDialog(
     onDismiss: () -> Unit
 ) {
     val datePickerState = rememberDatePickerState(
-        initialSelectedDateMillis = selectedDate.toEpochDay() * 24 * 60 * 60 * 1000
+        initialSelectedDateMillis = selectedDate.atStartOfDay(java.time.ZoneOffset.UTC).toInstant().toEpochMilli()
     )
     
     DatePickerDialog(
@@ -275,7 +280,9 @@ fun DatePickerDialog(
             TextButton(
                 onClick = {
                     datePickerState.selectedDateMillis?.let { millis ->
-                        val date = LocalDate.ofEpochDay(millis / (24 * 60 * 60 * 1000))
+                        val date = java.time.Instant.ofEpochMilli(millis)
+                            .atZone(java.time.ZoneOffset.UTC)
+                            .toLocalDate()
                         onDateSelected(date)
                     }
                 }
@@ -381,6 +388,7 @@ fun StatItem(
 @Composable
 fun HourItem(
     hourLog: HourUiState,
+    vibrationEnabled: Boolean,
     onRatingClick: (Int) -> Unit
 ) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -447,7 +455,9 @@ fun HourItem(
                             .size(32.dp)
                             .clip(CircleShape)
                             .clickable { 
-                                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                                if (vibrationEnabled) {
+                                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                                }
                                 onRatingClick(star) 
                             },
                         tint = when {

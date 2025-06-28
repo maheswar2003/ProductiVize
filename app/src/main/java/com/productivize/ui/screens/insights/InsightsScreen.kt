@@ -110,10 +110,14 @@ fun InsightsScreen(
                 
                 // Key Metrics
                 item {
-                    val weekAverage = weeklySummaries
-                        .map { it.achievementPercentage }
-                        .average()
-                        .toFloat()
+                    val weekAverage = if (weeklySummaries.isNotEmpty()) {
+                        weeklySummaries
+                            .map { it.achievementPercentage }
+                            .average()
+                            .toFloat()
+                    } else {
+                        0f
+                    }
                     
                     Row(
                         modifier = Modifier.fillMaxWidth(),

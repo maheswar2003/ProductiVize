@@ -6,26 +6,37 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.compose.rememberNavController
 import com.productivize.ui.navigation.ProductiVizeNavigation
+import com.productivize.ui.screens.settings.SettingsViewModel
 import com.productivize.ui.theme.ProductiVizeTheme
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @AndroidEntryPoint
 class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ProductiVizeTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    ProductiVizeApp()
-                }
-            }
+            AppRoot()
+        }
+    }
+}
+
+@Composable
+fun AppRoot() {
+    val viewModel: SettingsViewModel = hiltViewModel()
+    val settings by viewModel.settings.collectAsState()
+    ProductiVizeTheme(darkTheme = settings.darkMode) {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            ProductiVizeApp()
         }
     }
 }

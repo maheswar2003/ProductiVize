@@ -20,29 +20,36 @@ import com.productivize.ui.theme.TealRating
 fun StarRatingBar(
     rating: Int,
     onRatingSelected: (Int) -> Unit,
+    vibrationEnabled: Boolean = true,
     modifier: Modifier = Modifier
 ) {
     val hapticFeedback = LocalHapticFeedback.current
+    val validRating = rating.coerceIn(0, 5) // Ensure rating is within valid range
     
     Row(modifier = modifier) {
         (1..5).forEach { starValue ->
             Icon(
                 painter = painterResource(
-                    id = if (starValue <= rating) R.drawable.ic_star_filled
+                    id = if (starValue <= validRating) R.drawable.ic_star_filled
                          else R.drawable.ic_star_outline
                 ),
                 contentDescription = "$starValue star",
                 modifier = Modifier
                     .clickable { 
-                        hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                        onRatingSelected(starValue) 
+                        if (vibrationEnabled) {
+                            try {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                            } catch (e: Exception) {
+                                // Haptic feedback failed, continue without it
+                            }
+                        }
+                        onRatingSelected(starValue)
                     }
                     .padding(4.dp),
-                tint = when {
-                    rating >= starValue && rating >= 4 -> TealRating   // Teal for 4-5 stars
-                    rating >= starValue && rating == 3 -> AmberRating  // Amber for 3 stars
-                    rating >= starValue -> CoralRating                 // Coral for 1-2 stars
-                    else -> Color.LightGray
+                tint = if (starValue <= validRating) {
+                    Color(0xFFFFD700) // Gold color for filled stars
+                } else {
+                    Color.Gray
                 }
             )
         }
