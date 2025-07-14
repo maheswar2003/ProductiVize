@@ -204,7 +204,7 @@ See [BUILD_CHECK.md](BUILD_CHECK.md) for build troubleshooting and verification 
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Proprietary License - see the [LICENSE](LICENSE) file for details.
 
 ## 🎉 Acknowledgments
 
