@@ -46,7 +46,7 @@ class NotificationHelper @Inject constructor(
     }
 
     fun showHourlyReminder(settings: Settings) {
-        if (!settings.notificationsEnabled || !settings.hourlyReminders) return
+        if (!settings.notificationsEnabled) return
         if (!areNotificationsEnabled()) return
 
         try {

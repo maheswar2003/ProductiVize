@@ -62,16 +62,21 @@ class BiometricAuth(private val activity: FragmentActivity) : BiometricAuthInter
 fun rememberBiometricAuth(): BiometricAuthInterface {
     val context = LocalContext.current
     return remember {
-        val activity = context as? FragmentActivity
-        if (activity != null) {
-            BiometricAuth(activity)
-        } else {
-            // Create a dummy implementation for non-FragmentActivity contexts
-            object : BiometricAuthInterface {
-                override fun isAvailable(): Boolean = false
-                override fun authenticate(onSuccess: () -> Unit, onFailure: () -> Unit) {
-                    onFailure() // Always fail for dummy implementation
-                }
+        // Find FragmentActivity by traversing up the context chain
+        var currentContext = context
+        while (currentContext is android.content.ContextWrapper) {
+            if (currentContext is FragmentActivity) {
+                return@remember BiometricAuth(currentContext)
+            }
+            currentContext = currentContext.baseContext
+        }
+        
+        // Fallback implementation for when FragmentActivity is not found
+        object : BiometricAuthInterface {
+            override fun isAvailable(): Boolean = false
+            override fun authenticate(onSuccess: () -> Unit, onFailure: () -> Unit) {
+                // Silently fail when biometric auth is not available
+                onFailure()
             }
         }
     }

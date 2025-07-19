@@ -11,11 +11,8 @@ data class Settings(
     val vibrationEnabled: Boolean = true,
     val exportFormat: String = "CSV", // CSV/JSON
     val notificationsEnabled: Boolean = true,
-    val hourlyReminders: Boolean = true,
     val journalReminders: Boolean = true,
     val biometricLockEnabled: Boolean = false,
     val autoLockJournal: Boolean = false,
-    val autoBackupEnabled: Boolean = false,
-    val dailyGoalHours: Int = 8, // Daily productivity target in hours
-    val achievementThreshold: Int = 3 // Minimum rating (1-5) for achievement
+    val dailyGoalHours: Int = 8 // Daily productivity target in hours
 ) 

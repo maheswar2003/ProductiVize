@@ -21,31 +21,79 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.productivize.data.repository.ProductivityRepository
 import com.productivize.data.model.DailySummary
+import com.productivize.data.model.PerformanceTrend
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
 
 @HiltViewModel
 class InsightsViewModel @Inject constructor(
     private val repository: ProductivityRepository
 ) : ViewModel() {
     
-    val weeklySummaries: StateFlow<List<DailySummary>> = repository
-        .getWeeklySummaries()
+    private val today = LocalDate.now()
+    
+    // Optimized: Reduced from 6 StateFlows to 2 combined ones
+    val summariesData: StateFlow<SummariesData> = combine(
+        repository.getWeeklySummaries(),
+        repository.getMonthlySummaries()
+    ) { weekly, monthly ->
+        SummariesData(
+            weeklySummaries = weekly,
+            monthlySummaries = monthly
+        )
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = SummariesData(emptyList(), emptyList())
+    )
+    
+    // Optimized: Single analytics call instead of 4 separate ones
+    val analyticsData: StateFlow<ProductivityRepository.AnalyticsData?> = repository
+        .getAnalyticsData(today)
         .stateIn(
             scope = viewModelScope,
-            started = SharingStarted.Eagerly,
-            initialValue = emptyList()
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = null
         )
     
-    val monthlySummaries: StateFlow<List<DailySummary>> = repository
-        .getMonthlySummaries()
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.Eagerly,
-            initialValue = emptyList()
-        )
+    // Optimized: Lazy insights generation only when needed
+    fun getPersonalizedInsights(): Flow<List<String>> = flow {
+        val insights = repository.getBasicInsightsForDate(today)
+        emit(insights)
+    }.flowOn(Dispatchers.IO)
+    
+    // Force refresh analytics data
+    fun refreshAnalyticsData() {
+        viewModelScope.launch {
+            try {
+                repository.refreshAnalyticsData(today)
+            } catch (e: Exception) {
+                println("Error refreshing analytics data: ${e.message}")
+            }
+        }
+    }
+    
+    // Force refresh insights data
+    fun refreshInsightsData() {
+        viewModelScope.launch {
+            try {
+                // Force recalculation of daily summary to ensure fresh insights
+                repository.recalculateDailySummary(today)
+            } catch (e: Exception) {
+                println("Error refreshing insights data: ${e.message}")
+            }
+        }
+    }
+    
+    // Performance data class
+    data class SummariesData(
+        val weeklySummaries: List<DailySummary>,
+        val monthlySummaries: List<DailySummary>
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -54,17 +102,22 @@ fun InsightsScreen(
     navController: NavController,
     viewModel: InsightsViewModel = hiltViewModel()
 ) {
-    val weeklySummaries by viewModel.weeklySummaries.collectAsState()
-    val monthlySummaries by viewModel.monthlySummaries.collectAsState()
+    val summariesData by viewModel.summariesData.collectAsState()
+    val analyticsData by viewModel.analyticsData.collectAsState()
+    val personalizedInsights by viewModel.getPersonalizedInsights().collectAsState(initial = emptyList())
     
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Insights") }
+                title = { Text("📊 Advanced Insights") },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                )
             )
         }
     ) { paddingValues ->
-        if (weeklySummaries.isEmpty()) {
+        if (summariesData.weeklySummaries.isEmpty() && analyticsData == null) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -76,14 +129,21 @@ fun InsightsScreen(
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
-                        text = "📊",
+                        text = "🚀",
                         style = MaterialTheme.typography.displayLarge
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                        text = "Start tracking to see insights",
+                        text = "Start tracking to unlock advanced insights",
                         style = MaterialTheme.typography.headlineMedium,
                         textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Track your productivity hours to see AI-powered analytics",
+                        style = MaterialTheme.typography.bodyMedium,
+                        textAlign = TextAlign.Center,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }
@@ -95,81 +155,70 @@ fun InsightsScreen(
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
+                // Live Analytics Card
+                item {
+                    analyticsData?.let { analytics ->
+                        LiveAnalyticsCard(analytics.liveAnalytics)
+                    }
+                }
+                
+                // Streak Analysis Card
+                item {
+                    analyticsData?.let { analytics ->
+                        StreakAnalysisCard(analytics.streakAnalysis)
+                    }
+                }
+                
+                // Weekly Analytics Card
+                item {
+                    analyticsData?.let { analytics ->
+                        WeeklyAnalyticsCard(analytics.weeklyAnalytics)
+                    }
+                }
+                
+                // Personalized Insights Card
+                item {
+                    if (personalizedInsights.isNotEmpty()) {
+                        PersonalizedInsightsCard(personalizedInsights)
+                    }
+                }
+                
                 // Weekly Chart
                 item {
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(16.dp)
-                    ) {
-                        WeeklyChart(
-                            dailySummaries = weeklySummaries,
-                            modifier = Modifier.padding(16.dp)
-                        )
-                    }
-                }
-                
-                // Key Metrics
-                item {
-                    val weekAverage = if (weeklySummaries.isNotEmpty()) {
-                        weeklySummaries
-                            .map { it.achievementPercentage }
-                            .average()
-                            .toFloat()
-                    } else {
-                        0f
-                    }
-                    
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        MetricCard(
-                            title = "Week Average",
-                            value = "%.0f%%".format(weekAverage),
-                            icon = Icons.AutoMirrored.Filled.TrendingUp,
-                            modifier = Modifier.weight(1f)
-                        )
-                        
-                        MetricCard(
-                            title = "Best Day",
-                            value = weeklySummaries
-                                .maxByOrNull { it.achievementPercentage }
-                                ?.let { "%.0f%%".format(it.achievementPercentage) }
-                                ?: "0%",
-                            icon = Icons.Default.Star,
-                            modifier = Modifier.weight(1f)
-                        )
-                    }
-                }
-                
-                // Recent Insights
-                item {
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(16.dp)
-                        ) {
-                            Text(
-                                text = "Recent Insights",
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(bottom = 12.dp)
+                    if (summariesData.weeklySummaries.isNotEmpty()) {
+                        Card(
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = CardDefaults.cardColors(
+                                containerColor = MaterialTheme.colorScheme.surface
                             )
-                            
-                            weeklySummaries
-                                .takeLast(3)
-                                .reversed()
-                                .forEach { summary ->
-                                    if (summary.insights.isNotEmpty()) {
-                                        InsightItem(
-                                            date = summary.date,
-                                            insights = summary.insights
-                                        )
-                                        Spacer(modifier = Modifier.height(8.dp))
-                                    }
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(16.dp)
+                            ) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(
+                                        text = "📈 Weekly Trend",
+                                        style = MaterialTheme.typography.headlineSmall,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Icon(
+                                        Icons.AutoMirrored.Filled.TrendingUp,
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.primary
+                                    )
                                 }
+                                
+                                Spacer(modifier = Modifier.height(16.dp))
+                                
+                                WeeklyChart(
+                                    dailySummaries = summariesData.weeklySummaries.takeLast(7),
+                                    modifier = Modifier.height(200.dp)
+                                )
+                            }
                         }
                     }
                 }
@@ -179,57 +228,259 @@ fun InsightsScreen(
 }
 
 @Composable
-fun MetricCard(
-    title: String,
-    value: String,
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    modifier: Modifier = Modifier
-) {
+fun LiveAnalyticsCard(analytics: ProductivityRepository.LiveAnalyticsData) {
     Card(
-        modifier = modifier,
-        shape = RoundedCornerShape(12.dp)
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier.padding(16.dp)
         ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = value,
-                style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "⚡ Live Analytics",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+                
+                Text(
+                    text = when (analytics.currentTrend) {
+                        PerformanceTrend.UPWARD -> "📈 Improving"
+                        PerformanceTrend.DOWNWARD -> "📉 Declining"
+                        PerformanceTrend.STABLE -> "➡️ Stable"
+                        else -> "🔄 Neutral"
+                    },
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            }
+            
+            Spacer(modifier = Modifier.height(12.dp))
+            
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        text = "${(analytics.energyLevel * 100).toInt()}%",
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                    Text(
+                        text = "Energy Level",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                }
+                
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        text = "${analytics.focusDuration}m",
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                    Text(
+                        text = "Focus Time",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                }
+            }
         }
     }
 }
 
 @Composable
-fun InsightItem(
-    date: LocalDate,
-    insights: List<String>
-) {
-    Column {
-        Text(
-            text = date.toString(),
-            style = MaterialTheme.typography.labelMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+fun StreakAnalysisCard(streak: ProductivityRepository.StreakAnalysisData) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = if (streak.isStreakAtRisk) 
+                MaterialTheme.colorScheme.errorContainer 
+            else 
+                MaterialTheme.colorScheme.secondaryContainer
         )
-        insights.forEach { insight ->
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "🔥 Streak Analysis",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = if (streak.isStreakAtRisk) 
+                        MaterialTheme.colorScheme.onErrorContainer 
+                    else 
+                        MaterialTheme.colorScheme.onSecondaryContainer
+                )
+                
+                if (streak.isStreakAtRisk) {
+                    Icon(
+                        Icons.Default.Warning,
+                        contentDescription = "Streak at risk",
+                        tint = MaterialTheme.colorScheme.onErrorContainer
+                    )
+                }
+            }
+            
+            Spacer(modifier = Modifier.height(12.dp))
+            
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Column {
+                    Text(
+                        text = "${streak.streakLength}",
+                        style = MaterialTheme.typography.headlineLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = if (streak.isStreakAtRisk) 
+                            MaterialTheme.colorScheme.onErrorContainer 
+                        else 
+                            MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                    Text(
+                        text = "Day Streak",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = if (streak.isStreakAtRisk) 
+                            MaterialTheme.colorScheme.onErrorContainer 
+                        else 
+                            MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                }
+                
+                if (streak.isStreakAtRisk) {
+                    Column {
+                        Text(
+                            text = "⚠️ At Risk",
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onErrorContainer
+                        )
+                        Text(
+                            text = "Stay focused today!",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onErrorContainer
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun WeeklyAnalyticsCard(weekly: ProductivityRepository.WeeklyAnalyticsData) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        )
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
             Text(
-                text = "• $insight",
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(top = 4.dp)
+                text = "📊 Weekly Analytics",
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold
             )
+            
+            Spacer(modifier = Modifier.height(12.dp))
+            
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        text = "${weekly.averageAchievement.toInt()}%",
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = "Achievement",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+                
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        text = "${weekly.consistency.toInt()}%",
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = "Consistency",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            }
+            
+            Spacer(modifier = Modifier.height(12.dp))
+            
+            if (weekly.recommendations.isNotEmpty()) {
+                Text(
+                    text = "💡 Recommendations",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold
+                )
+                
+                weekly.recommendations.forEach { recommendation ->
+                    Text(
+                        text = "• $recommendation",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.padding(vertical = 2.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun PersonalizedInsightsCard(insights: List<String>) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.tertiaryContainer
+        )
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = "🎯 Today's Insights",
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onTertiaryContainer
+            )
+            
+            Spacer(modifier = Modifier.height(12.dp))
+            
+            insights.forEach { insight ->
+                Text(
+                    text = "• $insight",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onTertiaryContainer,
+                    modifier = Modifier.padding(vertical = 2.dp)
+                )
+            }
         }
     }
 } 

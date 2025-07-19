@@ -16,7 +16,10 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,6 +35,14 @@ class SettingsViewModel @Inject constructor(
 
     private val _settings = MutableStateFlow(Settings())
     val settings: StateFlow<Settings> = _settings.asStateFlow()
+    
+    // Export state management
+    private val _exportState = MutableStateFlow<ExportState>(ExportState.Idle)
+    val exportState: StateFlow<ExportState> = _exportState.asStateFlow()
+    
+    // Settings feedback state
+    private val _settingsFeedback = MutableStateFlow<String?>(null)
+    val settingsFeedback: StateFlow<String?> = _settingsFeedback.asStateFlow()
 
     init {
         loadSettings()
@@ -39,16 +50,33 @@ class SettingsViewModel @Inject constructor(
 
     private fun loadSettings() {
         viewModelScope.launch {
-            settingsDao.getSettings()?.let { savedSettings ->
-                _settings.value = savedSettings
+            try {
+                settingsDao.getSettings()?.let { savedSettings ->
+                    _settings.value = savedSettings
+                }
+            } catch (e: Exception) {
+                // Keep default settings if loading fails
+                e.printStackTrace()
             }
         }
     }
 
     fun updateDarkMode(enabled: Boolean) {
-        val updatedSettings = _settings.value.copy(darkMode = enabled)
-        _settings.value = updatedSettings
-        saveSettings(updatedSettings)
+        // INSTANT UI UPDATE - happens immediately on main thread
+        _settings.value = _settings.value.copy(darkMode = enabled)
+        
+        // Background database save - non-blocking
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                settingsDao.insert(_settings.value)
+            } catch (e: Exception) {
+                // On error, revert to previous state
+                withContext(Dispatchers.Main) {
+                    _settings.value = _settings.value.copy(darkMode = !enabled)
+                }
+                e.printStackTrace()
+            }
+        }
     }
 
     fun updateNotificationTime(time: String) {
@@ -83,17 +111,6 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun updateHourlyReminders(enabled: Boolean) {
-        val updatedSettings = _settings.value.copy(hourlyReminders = enabled)
-        _settings.value = updatedSettings
-        saveSettings(updatedSettings)
-        
-        if (enabled && updatedSettings.notificationsEnabled) {
-            // Show a test hourly reminder
-            notificationHelper.showHourlyReminder(updatedSettings)
-        }
-    }
-
     fun updateJournalReminders(enabled: Boolean) {
         val updatedSettings = _settings.value.copy(journalReminders = enabled)
         _settings.value = updatedSettings
@@ -106,47 +123,58 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun updateBiometricLock(enabled: Boolean) {
-        val updatedSettings = _settings.value.copy(biometricLockEnabled = enabled)
-        _settings.value = updatedSettings
-        saveSettings(updatedSettings)
-    }
-
-    fun updateAutoLockJournal(enabled: Boolean) {
-        val updatedSettings = _settings.value.copy(autoLockJournal = enabled)
-        _settings.value = updatedSettings
-        saveSettings(updatedSettings)
-    }
-
-    fun updateAutoBackup(enabled: Boolean) {
-        val updatedSettings = _settings.value.copy(autoBackupEnabled = enabled)
-        _settings.value = updatedSettings
-        saveSettings(updatedSettings)
-        
-        if (enabled) {
-            // Schedule daily backup (simplified implementation)
-            scheduleAutoBackup()
-        } else {
-            // Cancel scheduled backups
-            cancelAutoBackup()
-        }
-    }
-
-    private fun scheduleAutoBackup() {
-        // In a real implementation, this would use WorkManager or AlarmManager
-        // For now, we'll just show a notification that auto-backup is enabled
         viewModelScope.launch {
             try {
-                // Simulate backup scheduling
-                notificationHelper.showAutoBackupEnabled()
+                val updatedSettings = _settings.value.copy(biometricLockEnabled = enabled)
+                _settings.value = updatedSettings
+                saveSettings(updatedSettings)
+                
+                // Show feedback based on biometric availability
+                if (enabled) {
+                    if (isBiometricAvailable()) {
+                        _settingsFeedback.value = "🔒 Biometric lock enabled"
+                    } else {
+                        _settingsFeedback.value = "⚠️ Biometric authentication not available"
+                        // Revert the setting since biometric is not available
+                        _settings.value = _settings.value.copy(biometricLockEnabled = false)
+                    }
+                } else {
+                    _settingsFeedback.value = "🔓 Biometric lock disabled"
+                }
+                
+                // Clear feedback after 3 seconds
+                kotlinx.coroutines.delay(3000)
+                _settingsFeedback.value = null
             } catch (e: Exception) {
+                // Revert on error
+                _settings.value = _settings.value.copy(biometricLockEnabled = !enabled)
                 e.printStackTrace()
             }
         }
     }
-    
-    private fun cancelAutoBackup() {
-        // Cancel any scheduled backup work
-        // For now, just a placeholder
+
+    fun updateAutoLockJournal(enabled: Boolean) {
+        viewModelScope.launch {
+            try {
+                val updatedSettings = _settings.value.copy(autoLockJournal = enabled)
+                _settings.value = updatedSettings
+                saveSettings(updatedSettings)
+                
+                if (enabled) {
+                    _settingsFeedback.value = "🔒 Auto-lock journal enabled (5 minutes)"
+                } else {
+                    _settingsFeedback.value = "🔓 Auto-lock journal disabled"
+                }
+                
+                // Clear feedback after 3 seconds
+                kotlinx.coroutines.delay(3000)
+                _settingsFeedback.value = null
+            } catch (e: Exception) {
+                // Revert on error
+                _settings.value = _settings.value.copy(autoLockJournal = !enabled)
+                e.printStackTrace()
+            }
+        }
     }
 
     fun updateDailyGoal(hours: Int) {
@@ -155,11 +183,7 @@ class SettingsViewModel @Inject constructor(
         saveSettings(updatedSettings)
     }
 
-    fun updateAchievementThreshold(threshold: Int) {
-        val updatedSettings = _settings.value.copy(achievementThreshold = threshold)
-        _settings.value = updatedSettings
-        saveSettings(updatedSettings)
-    }
+
 
     private fun saveSettings(settings: Settings) {
         viewModelScope.launch {
@@ -170,38 +194,59 @@ class SettingsViewModel @Inject constructor(
     fun exportData() {
         viewModelScope.launch {
             try {
-                val hourLogs = hourLogDao.getAllHourLogs()
-                val dailySummaries = dailySummaryDao.getAllSummaries()
+                _exportState.value = ExportState.Exporting
+                
+                // Get actual data from database
+                val startDate = java.time.LocalDate.now().minusDays(365) // Last year of data
+                val endDate = java.time.LocalDate.now()
+                
+                val hourLogs = hourLogDao.getHourLogsInRange(startDate, endDate).first()
+                val dailySummaries = dailySummaryDao.getDailySummariesInRange(startDate, endDate).first()
                 val journalEntries = journalDao.getAllEntries()
                 
-                when (_settings.value.exportFormat) {
-                    "CSV" -> {
-                        val shareIntent = dataExporter.exportToCSV(hourLogs, dailySummaries, journalEntries)
-                        shareIntent?.let { 
-                            it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            context.startActivity(Intent.createChooser(it, "Export Data"))
-                        }
-                    }
-                    "JSON" -> {
-                        val shareIntent = dataExporter.exportToJSON(hourLogs, dailySummaries, journalEntries)
-                        shareIntent?.let { 
-                            it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            context.startActivity(Intent.createChooser(it, "Export Data"))
-                        }
-                    }
+                // Check if we have data to export
+                if (hourLogs.isEmpty() && dailySummaries.isEmpty() && journalEntries.isEmpty()) {
+                    _exportState.value = ExportState.Error("No data available to export")
+                    return@launch
                 }
+                
+                val shareIntent = when (_settings.value.exportFormat) {
+                    "CSV" -> dataExporter.exportToCSV(hourLogs, dailySummaries, journalEntries)
+                    "JSON" -> dataExporter.exportToJSON(hourLogs, dailySummaries, journalEntries)
+                    else -> dataExporter.exportToCSV(hourLogs, dailySummaries, journalEntries)
+                }
+                
+                if (shareIntent != null) {
+                    shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context.startActivity(Intent.createChooser(shareIntent, "Export Data"))
+                    _exportState.value = ExportState.Success("Data exported successfully!")
+                } else {
+                    _exportState.value = ExportState.Error("Failed to create export file")
+                }
+                
+                // Reset state after a delay
+                kotlinx.coroutines.delay(3000)
+                _exportState.value = ExportState.Idle
+                
             } catch (e: Exception) {
-                // Handle export error - could emit to UI state
+                _exportState.value = ExportState.Error("Export failed: ${e.message}")
                 e.printStackTrace()
             }
         }
+    }
+    
+    sealed class ExportState {
+        object Idle : ExportState()
+        object Exporting : ExportState()
+        data class Success(val message: String) : ExportState()
+        data class Error(val message: String) : ExportState()
     }
 
     fun clearAllData() {
         viewModelScope.launch {
             try {
                 hourLogDao.deleteAllHourLogs()
-                dailySummaryDao.deleteAllSummaries()
+                dailySummaryDao.deleteAllDailySummaries()
                 journalDao.deleteAllEntries()
                 // Reset settings to default
                 _settings.value = Settings()
@@ -212,65 +257,22 @@ class SettingsViewModel @Inject constructor(
         }
     }
     
-    fun showVersionInfo() {
-        // Create an intent to show app info or version details
-        try {
-            val intent = Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                data = android.net.Uri.parse("package:${context.packageName}")
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            }
-            context.startActivity(intent)
+    // Check if biometric authentication is available
+    fun isBiometricAvailable(): Boolean {
+        return try {
+            val biometricManager = androidx.biometric.BiometricManager.from(context)
+            biometricManager.canAuthenticate(androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK) == androidx.biometric.BiometricManager.BIOMETRIC_SUCCESS
         } catch (e: Exception) {
-            // Fallback - could show a dialog with help info
-            e.printStackTrace()
+            false
         }
     }
     
-    fun openHelp() {
-        // Open help documentation or support page
-        try {
-            val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = android.net.Uri.parse("https://productivize.app/help")
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            }
-            context.startActivity(intent)
-        } catch (e: Exception) {
-            // Fallback - could show a dialog with help info
+    // Get biometric status for UI feedback
+    fun getBiometricStatus(): String {
+        return if (isBiometricAvailable()) {
+            "Available"
+        } else {
+            "Not available"
         }
-    }
-    
-    fun rateApp() {
-        // Open Play Store rating page
-        try {
-            val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = android.net.Uri.parse("market://details?id=${context.packageName}")
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            }
-            context.startActivity(intent)
-        } catch (e: Exception) {
-            // Fallback to web Play Store
-            try {
-                val intent = Intent(Intent.ACTION_VIEW).apply {
-                    data = android.net.Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                }
-                context.startActivity(intent)
-            } catch (ex: Exception) {
-                // Handle error
-            }
-        }
-    }
-    
-    fun shareApp() {
-        // Create share intent for the app
-        val shareIntent = Intent(Intent.ACTION_SEND).apply {
-            type = "text/plain"
-            putExtra(Intent.EXTRA_SUBJECT, "Check out ProductiVize!")
-            putExtra(Intent.EXTRA_TEXT, 
-                "I've been using ProductiVize to track my productivity and it's amazing! " +
-                "Get it here: https://play.google.com/store/apps/details?id=${context.packageName}")
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        }
-        context.startActivity(Intent.createChooser(shareIntent, "Share ProductiVize"))
     }
 } 

@@ -40,7 +40,7 @@ class JournalViewModel @Inject constructor(
                     // Create entry with auto-generated content
                     try {
                         val achievements = assistant.generateAutoAchievements()
-                        val patterns = assistant.detectPatterns()
+                        val patterns = "Building your productivity patterns..."
                         val newEntry = JournalEntry(date = currentDate).copy(
                             autoAchievements = achievements,
                             autoPatterns = patterns
@@ -126,11 +126,31 @@ class JournalViewModel @Inject constructor(
         }
     }
 
+    private val _saveState = MutableStateFlow<SaveState>(SaveState.Idle)
+    val saveState: StateFlow<SaveState> = _saveState.asStateFlow()
+
     fun saveEntry() {
         viewModelScope.launch {
-            journalDao.insert(_journalEntry.value)
+            try {
+                _saveState.value = SaveState.Saving
+                journalDao.insert(_journalEntry.value)
+                _saveState.value = SaveState.Success
+                // Reset to idle after showing success
+                kotlinx.coroutines.delay(2000)
+                _saveState.value = SaveState.Idle
+            } catch (e: Exception) {
+                _saveState.value = SaveState.Error(e.message ?: "Failed to save")
+                e.printStackTrace()
+            }
         }
         resetAutoLockTimer()
+    }
+
+    sealed class SaveState {
+        object Idle : SaveState()
+        object Saving : SaveState()
+        object Success : SaveState()
+        data class Error(val message: String) : SaveState()
     }
     
     override fun onCleared() {

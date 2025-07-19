@@ -1,0 +1,394 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 8,
+    "identityHash": "bf7d03f76c3abd0933526bfb0b122a9c",
+    "entities": [
+      {
+        "tableName": "hour_logs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `dateTime` TEXT NOT NULL, `hour` INTEGER NOT NULL, `rating` INTEGER, `tags` TEXT NOT NULL, `notes` TEXT, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dateTime",
+            "columnName": "dateTime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hour",
+            "columnName": "hour",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rating",
+            "columnName": "rating",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tags",
+            "columnName": "tags",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAt",
+            "columnName": "updatedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "daily_summaries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`date` TEXT NOT NULL, `totalHoursRated` INTEGER NOT NULL, `achievementPercentage` REAL NOT NULL, `averageRating` REAL NOT NULL, `peakHours` TEXT NOT NULL, `lowHours` TEXT NOT NULL, `topTags` TEXT NOT NULL, `insights` TEXT NOT NULL, `journalEntry` TEXT, `wins` TEXT NOT NULL, `challenges` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `performanceIndex` REAL NOT NULL, `performanceGrade` TEXT NOT NULL, `consistency` REAL NOT NULL, `consistencyRating` TEXT NOT NULL, `streakCount` INTEGER NOT NULL, `streakType` TEXT NOT NULL, `adaptiveThreshold` INTEGER NOT NULL, `productiveHours` INTEGER NOT NULL, `momentum` REAL NOT NULL, `momentumLevel` TEXT NOT NULL, `energyPattern` TEXT NOT NULL, `predictiveInsight` TEXT NOT NULL, PRIMARY KEY(`date`))",
+        "fields": [
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalHoursRated",
+            "columnName": "totalHoursRated",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "achievementPercentage",
+            "columnName": "achievementPercentage",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "averageRating",
+            "columnName": "averageRating",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "peakHours",
+            "columnName": "peakHours",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lowHours",
+            "columnName": "lowHours",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "topTags",
+            "columnName": "topTags",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "insights",
+            "columnName": "insights",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "journalEntry",
+            "columnName": "journalEntry",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "wins",
+            "columnName": "wins",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "challenges",
+            "columnName": "challenges",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "performanceIndex",
+            "columnName": "performanceIndex",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "performanceGrade",
+            "columnName": "performanceGrade",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "consistency",
+            "columnName": "consistency",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "consistencyRating",
+            "columnName": "consistencyRating",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "streakCount",
+            "columnName": "streakCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "streakType",
+            "columnName": "streakType",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "adaptiveThreshold",
+            "columnName": "adaptiveThreshold",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "productiveHours",
+            "columnName": "productiveHours",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "momentum",
+            "columnName": "momentum",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "momentumLevel",
+            "columnName": "momentumLevel",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "energyPattern",
+            "columnName": "energyPattern",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "predictiveInsight",
+            "columnName": "predictiveInsight",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "date"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "settings",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `darkMode` INTEGER NOT NULL, `notificationTime` TEXT NOT NULL, `vibrationEnabled` INTEGER NOT NULL, `exportFormat` TEXT NOT NULL, `notificationsEnabled` INTEGER NOT NULL, `journalReminders` INTEGER NOT NULL, `biometricLockEnabled` INTEGER NOT NULL, `autoLockJournal` INTEGER NOT NULL, `dailyGoalHours` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "darkMode",
+            "columnName": "darkMode",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notificationTime",
+            "columnName": "notificationTime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vibrationEnabled",
+            "columnName": "vibrationEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exportFormat",
+            "columnName": "exportFormat",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notificationsEnabled",
+            "columnName": "notificationsEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "journalReminders",
+            "columnName": "journalReminders",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "biometricLockEnabled",
+            "columnName": "biometricLockEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "autoLockJournal",
+            "columnName": "autoLockJournal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dailyGoalHours",
+            "columnName": "dailyGoalHours",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "journal_entries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `date` TEXT NOT NULL, `createdTime` INTEGER NOT NULL, `wins` TEXT NOT NULL, `challenges` TEXT NOT NULL, `goalsTomorrow` TEXT NOT NULL, `autoAchievements` TEXT NOT NULL, `autoPatterns` TEXT NOT NULL, `moodEmoji` TEXT NOT NULL, `voiceNotePath` TEXT, `imageUris` TEXT NOT NULL, `isLocked` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdTime",
+            "columnName": "createdTime",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wins",
+            "columnName": "wins",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "challenges",
+            "columnName": "challenges",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "goalsTomorrow",
+            "columnName": "goalsTomorrow",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "autoAchievements",
+            "columnName": "autoAchievements",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "autoPatterns",
+            "columnName": "autoPatterns",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "moodEmoji",
+            "columnName": "moodEmoji",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "voiceNotePath",
+            "columnName": "voiceNotePath",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "imageUris",
+            "columnName": "imageUris",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isLocked",
+            "columnName": "isLocked",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bf7d03f76c3abd0933526bfb0b122a9c')"
+    ]
+  }
+}

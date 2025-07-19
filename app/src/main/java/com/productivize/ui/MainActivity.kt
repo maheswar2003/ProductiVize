@@ -31,6 +31,8 @@ class MainActivity : FragmentActivity() {
 fun AppRoot() {
     val viewModel: SettingsViewModel = hiltViewModel()
     val settings by viewModel.settings.collectAsState()
+    
+    // INSTANT theme switching - no animation delay
     ProductiVizeTheme(darkTheme = settings.darkMode) {
         Surface(
             modifier = Modifier.fillMaxSize(),

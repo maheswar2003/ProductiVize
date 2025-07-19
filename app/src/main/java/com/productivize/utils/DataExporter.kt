@@ -41,6 +41,9 @@ class DataExporter(private val context: Context) {
             val fileName = "ProductiVize_Export_$timestamp.csv"
             val file = File(context.cacheDir, fileName)
             
+            println("Exporting CSV to: ${file.absolutePath}")
+            println("Hour logs: ${hourLogs.size}, Daily summaries: ${dailySummaries.size}, Journal entries: ${journalEntries.size}")
+            
             FileWriter(file).use { writer ->
                 // Hour Logs CSV
                 writer.append("=== HOUR LOGS ===\n")
@@ -62,8 +65,11 @@ class DataExporter(private val context: Context) {
                 }
             }
             
+            println("CSV file created successfully: ${file.exists()}, size: ${file.length()} bytes")
             createShareIntent(file, "text/csv")
         } catch (e: Exception) {
+            println("Error creating CSV export: ${e.message}")
+            e.printStackTrace()
             null
         }
     }
@@ -96,18 +102,27 @@ class DataExporter(private val context: Context) {
     }
     
     private fun createShareIntent(file: File, mimeType: String): Intent {
-        val uri = FileProvider.getUriForFile(
-            context,
-            "${context.packageName}.fileprovider",
-            file
-        )
-        
-        return Intent(Intent.ACTION_SEND).apply {
-            type = mimeType
-            putExtra(Intent.EXTRA_STREAM, uri)
-            putExtra(Intent.EXTRA_SUBJECT, "ProductiVize Data Export")
-            putExtra(Intent.EXTRA_TEXT, "Your productivity data export from ProductiVize")
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        try {
+            val uri = FileProvider.getUriForFile(
+                context,
+                "${context.packageName}.fileprovider",
+                file
+            )
+            
+            println("Created share intent with URI: $uri")
+            println("File exists: ${file.exists()}, File size: ${file.length()} bytes")
+            
+            return Intent(Intent.ACTION_SEND).apply {
+                type = mimeType
+                putExtra(Intent.EXTRA_STREAM, uri)
+                putExtra(Intent.EXTRA_SUBJECT, "ProductiVize Data Export")
+                putExtra(Intent.EXTRA_TEXT, "Your productivity data export from ProductiVize")
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+        } catch (e: Exception) {
+            println("Error creating share intent: ${e.message}")
+            e.printStackTrace()
+            throw e
         }
     }
     

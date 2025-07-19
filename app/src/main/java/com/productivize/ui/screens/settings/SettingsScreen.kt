@@ -9,15 +9,15 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.EventNote
-import androidx.compose.material.icons.automirrored.filled.Help
-import androidx.compose.material.icons.automirrored.filled.TrendingUp
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -31,17 +31,46 @@ fun SettingsScreen(
     viewModel: SettingsViewModel = hiltViewModel()
 ) {
     val settings by viewModel.settings.collectAsState()
+    val exportState by viewModel.exportState.collectAsState()
+    val settingsFeedback by viewModel.settingsFeedback.collectAsState()
     val context = LocalContext.current
     
     var showDailyGoalDialog by remember { mutableStateOf(false) }
-    var showThresholdDialog by remember { mutableStateOf(false) }
     var showTimePickerDialog by remember { mutableStateOf(false) }
     var showClearDataDialog by remember { mutableStateOf(false) }
+    val snackbarHostState = remember { SnackbarHostState() }
+    
+    // Show export feedback
+    LaunchedEffect(exportState) {
+        when (val state = exportState) {
+            is SettingsViewModel.ExportState.Success -> {
+                snackbarHostState.showSnackbar(state.message)
+            }
+            is SettingsViewModel.ExportState.Error -> {
+                snackbarHostState.showSnackbar(state.message)
+            }
+            else -> {}
+        }
+    }
+    
+    // Show settings feedback
+    LaunchedEffect(settingsFeedback) {
+        settingsFeedback?.let { feedback ->
+            snackbarHostState.showSnackbar(feedback)
+        }
+    }
 
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = { Text("Settings") }
+                title = { 
+                    Text(
+                        text = "Settings",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
             )
         }
     ) { paddingValues ->
@@ -60,16 +89,25 @@ fun SettingsScreen(
                         title = "Dark Mode",
                         subtitle = "Switch between light and dark theme",
                         trailing = {
+                            val hapticFeedback = LocalHapticFeedback.current
                             Switch(
                                 checked = settings.darkMode,
-                                onCheckedChange = { viewModel.updateDarkMode(it) }
+                                onCheckedChange = { 
+                                    // Provide immediate haptic feedback
+                                    try {
+                                        hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                                    } catch (e: Exception) {
+                                        // Haptic feedback failed, continue without it
+                                    }
+                                    viewModel.updateDarkMode(it) 
+                                }
                             )
                         }
                     )
                 }
             }
 
-            // Notifications Section
+            // Notifications Section (Simplified)
             item {
                 SettingsSection(title = "Notifications") {
                     SettingsItem(
@@ -85,17 +123,6 @@ fun SettingsScreen(
                     )
                     SettingsItem(
                         icon = Icons.Default.Schedule,
-                        title = "Hourly Reminders",
-                        subtitle = "Remind me to rate each hour",
-                        trailing = {
-                            Switch(
-                                checked = settings.hourlyReminders,
-                                onCheckedChange = viewModel::updateHourlyReminders
-                            )
-                        }
-                    )
-                    SettingsItem(
-                        icon = Icons.AutoMirrored.Filled.EventNote,
                         title = "Journal Reminders",
                         subtitle = "Daily reflection reminder at ${settings.notificationTime}",
                         onClick = { showTimePickerDialog = true },
@@ -115,18 +142,37 @@ fun SettingsScreen(
                     SettingsItem(
                         icon = Icons.Default.Fingerprint,
                         title = "Biometric Lock",
-                        subtitle = "Secure your journal with fingerprint/face",
+                        subtitle = if (settings.biometricLockEnabled) {
+                            "🔒 Journal secured with biometric authentication"
+                        } else {
+                            if (viewModel.isBiometricAvailable()) {
+                                "🔓 Tap to secure journal with fingerprint/face"
+                            } else {
+                                "⚠️ Biometric authentication not available"
+                            }
+                        },
                         trailing = {
                             Switch(
                                 checked = settings.biometricLockEnabled,
-                                onCheckedChange = viewModel::updateBiometricLock
+                                onCheckedChange = { enabled ->
+                                    if (enabled && !viewModel.isBiometricAvailable()) {
+                                        // Show error or disable the switch
+                                        // For now, just don't enable it
+                                        return@Switch
+                                    }
+                                    viewModel.updateBiometricLock(enabled)
+                                }
                             )
                         }
                     )
                     SettingsItem(
                         icon = Icons.Default.Lock,
                         title = "Auto-Lock Journal",
-                        subtitle = "Lock journal after 5 minutes of inactivity",
+                        subtitle = if (settings.autoLockJournal) {
+                            "🔒 Journal auto-locks after 5 minutes"
+                        } else {
+                            "🔓 Journal stays unlocked"
+                        },
                         trailing = {
                             Switch(
                                 checked = settings.autoLockJournal,
@@ -137,52 +183,47 @@ fun SettingsScreen(
                 }
             }
 
-            // Data & Backup Section
+            // Data Management Section
             item {
-                SettingsSection(title = "Data & Backup") {
-                    SettingsItem(
-                        icon = Icons.Default.CloudUpload,
-                        title = "Auto Backup",
-                        subtitle = "Automatically backup your data",
-                        trailing = {
-                            Switch(
-                                checked = settings.autoBackupEnabled,
-                                onCheckedChange = viewModel::updateAutoBackup
-                            )
-                        }
-                    )
+                SettingsSection(title = "Data Management") {
                     SettingsItem(
                         icon = Icons.Default.Download,
                         title = "Export Data",
-                        subtitle = "Download your productivity data as ${settings.exportFormat}",
-                        onClick = { viewModel.exportData() }
+                        subtitle = when (exportState) {
+                            is SettingsViewModel.ExportState.Exporting -> "Exporting data..."
+                            else -> "Download your productivity data as ${settings.exportFormat}"
+                        },
+                        onClick = { 
+                            if (exportState !is SettingsViewModel.ExportState.Exporting) {
+                                viewModel.exportData() 
+                            }
+                        },
+                        trailing = {
+                            if (exportState is SettingsViewModel.ExportState.Exporting) {
+                                CircularProgressIndicator(
+                                    modifier = Modifier.size(20.dp),
+                                    strokeWidth = 2.dp
+                                )
+                            }
+                        }
                     )
                     SettingsItem(
                         icon = Icons.Default.DeleteSweep,
                         title = "Clear All Data",
                         subtitle = "Permanently delete all your data",
-                        onClick = { 
-                            // TODO: Show confirmation dialog
-                            showClearDataDialog = true 
-                        }
+                        onClick = { showClearDataDialog = true }
                     )
                 }
             }
 
-            // Goals & Productivity Section
+            // Productivity Section
             item {
-                SettingsSection(title = "Goals & Productivity") {
+                SettingsSection(title = "Productivity") {
                     SettingsItem(
                         icon = Icons.Default.Flag,
                         title = "Daily Goal",
                         subtitle = "Set your daily productivity target: ${settings.dailyGoalHours} hours",
                         onClick = { showDailyGoalDialog = true }
-                    )
-                    SettingsItem(
-                        icon = Icons.AutoMirrored.Filled.TrendingUp,
-                        title = "Achievement Threshold",
-                        subtitle = "Minimum rating for achievement: ${settings.achievementThreshold} stars",
-                        onClick = { showThresholdDialog = true }
                     )
                     SettingsItem(
                         icon = Icons.Default.Vibration,
@@ -194,36 +235,6 @@ fun SettingsScreen(
                                 onCheckedChange = { viewModel.updateVibration(it) }
                             )
                         }
-                    )
-                }
-            }
-
-            // About Section
-            item {
-                SettingsSection(title = "About") {
-                    SettingsItem(
-                        icon = Icons.Default.Info,
-                        title = "App Version",
-                        subtitle = "ProductiVize v1.0.0",
-                        onClick = { viewModel.showVersionInfo() }
-                    )
-                    SettingsItem(
-                        icon = Icons.AutoMirrored.Filled.Help,
-                        title = "Help & Support",
-                        subtitle = "Get help and contact support",
-                        onClick = { viewModel.openHelp() }
-                    )
-                    SettingsItem(
-                        icon = Icons.Default.Star,
-                        title = "Rate App",
-                        subtitle = "Rate ProductiVize on Google Play",
-                        onClick = { viewModel.rateApp() }
-                    )
-                    SettingsItem(
-                        icon = Icons.Default.Share,
-                        title = "Share App",
-                        subtitle = "Share ProductiVize with friends",
-                        onClick = { viewModel.shareApp() }
                     )
                 }
             }
@@ -239,18 +250,6 @@ fun SettingsScreen(
                 showDailyGoalDialog = false
             },
             onDismiss = { showDailyGoalDialog = false }
-        )
-    }
-    
-    // Achievement Threshold Dialog
-    if (showThresholdDialog) {
-        AchievementThresholdDialog(
-            currentThreshold = settings.achievementThreshold,
-            onThresholdSelected = { threshold ->
-                viewModel.updateAchievementThreshold(threshold)
-                showThresholdDialog = false
-            },
-            onDismiss = { showThresholdDialog = false }
         )
     }
 
@@ -410,67 +409,7 @@ fun DailyGoalDialog(
     )
 }
 
-@Composable
-fun AchievementThresholdDialog(
-    currentThreshold: Int,
-    onThresholdSelected: (Int) -> Unit,
-    onDismiss: () -> Unit
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Achievement Threshold") },
-        text = {
-            Column {
-                Text("What's the minimum rating for an hour to count as an achievement?")
-                Spacer(modifier = Modifier.height(16.dp))
-                
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    (1..5).forEach { rating ->
-                        Card(
-                            modifier = Modifier
-                                .size(48.dp)
-                                .clickable { onThresholdSelected(rating) },
-                            colors = CardDefaults.cardColors(
-                                containerColor = if (rating == currentThreshold) 
-                                    MaterialTheme.colorScheme.primary 
-                                else 
-                                    MaterialTheme.colorScheme.surfaceVariant
-                            )
-                        ) {
-                            Box(
-                                modifier = Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Star,
-                                    contentDescription = "$rating stars",
-                                    tint = if (rating == currentThreshold) 
-                                        MaterialTheme.colorScheme.onPrimary 
-                                    else 
-                                        MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            }
-                        }
-                    }
-                }
-                
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = "Selected: $currentThreshold star${if (currentThreshold != 1) "s" else ""} minimum",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text("Cancel")
-            }
-        }
-    )
-}
+
 
 @Composable
 fun TimePickerDialog(

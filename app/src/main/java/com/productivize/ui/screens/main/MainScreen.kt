@@ -16,7 +16,12 @@ import com.productivize.ui.screens.tracker.TrackerScreen
 import com.productivize.ui.screens.insights.InsightsScreen
 import com.productivize.ui.journal.JournalScreen
 import com.productivize.ui.screens.settings.SettingsScreen
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.Immutable
 
+@Immutable
 data class BottomNavItem(
     val title: String,
     val route: String,
@@ -29,34 +34,38 @@ data class BottomNavItem(
 fun MainScreen(navController: NavController) {
     val bottomNavController = rememberNavController()
     val navBackStackEntry by bottomNavController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
+    val currentRoute by remember(navBackStackEntry) {
+        derivedStateOf { navBackStackEntry?.destination?.route }
+    }
     
-    val bottomNavItems = listOf(
-        BottomNavItem(
-            title = "Tracker",
-            route = "tracker",
-            selectedIcon = Icons.Filled.Home,
-            unselectedIcon = Icons.Outlined.Home
-        ),
-        BottomNavItem(
-            title = "Insights",
-            route = "insights",
-            selectedIcon = Icons.Filled.Analytics,
-            unselectedIcon = Icons.Outlined.Analytics
-        ),
-        BottomNavItem(
-            title = "Journal",
-            route = "journal",
-            selectedIcon = Icons.Filled.Book,
-            unselectedIcon = Icons.Outlined.Book
-        ),
-        BottomNavItem(
-            title = "More",
-            route = "settings",
-            selectedIcon = Icons.Filled.MoreHoriz,
-            unselectedIcon = Icons.Outlined.MoreHoriz
+    val bottomNavItems = remember {
+        listOf(
+            BottomNavItem(
+                title = "Tracker",
+                route = "tracker",
+                selectedIcon = Icons.Filled.Home,
+                unselectedIcon = Icons.Outlined.Home
+            ),
+            BottomNavItem(
+                title = "Insights",
+                route = "insights",
+                selectedIcon = Icons.Filled.Analytics,
+                unselectedIcon = Icons.Outlined.Analytics
+            ),
+            BottomNavItem(
+                title = "Journal",
+                route = "journal",
+                selectedIcon = Icons.Filled.Book,
+                unselectedIcon = Icons.Outlined.Book
+            ),
+            BottomNavItem(
+                title = "More",
+                route = "settings",
+                selectedIcon = Icons.Filled.MoreHoriz,
+                unselectedIcon = Icons.Outlined.MoreHoriz
+            )
         )
-    )
+    }
     
     Scaffold(
         bottomBar = {

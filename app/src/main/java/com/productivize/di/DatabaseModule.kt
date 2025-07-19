@@ -8,8 +8,10 @@ import com.productivize.data.dao.SettingsDao
 import com.productivize.data.dao.JournalDao
 import com.productivize.data.database.ProductiVizeDatabase
 import com.productivize.data.repository.ProductivityRepository
-import com.productivize.domain.calculator.AchievementCalculator
-import com.productivize.domain.generator.InsightGenerator
+import com.productivize.domain.calculator.AchievementMaster
+import com.productivize.domain.generator.InsightEngine
+import com.productivize.domain.tracker.MomentumTracker
+import com.productivize.domain.analytics.LiveAnalytics
 import com.productivize.utils.DataExporter
 import com.productivize.utils.NotificationHelper
 import dagger.Module
@@ -31,7 +33,13 @@ object DatabaseModule {
             ProductiVizeDatabase::class.java,
             "productivize_database"
         )
-        .addMigrations(ProductiVizeDatabase.MIGRATION_4_5)
+        .addMigrations(
+            ProductiVizeDatabase.MIGRATION_4_5,
+            ProductiVizeDatabase.MIGRATION_5_6,
+            ProductiVizeDatabase.MIGRATION_6_7,
+            ProductiVizeDatabase.MIGRATION_7_8
+        )
+        .fallbackToDestructiveMigration()
         .build()
     }
     
@@ -55,18 +63,32 @@ object DatabaseModule {
         return database.journalDao()
     }
     
+    // Advanced calculation and analytics components
     @Provides
     @Singleton
-    fun provideAchievementCalculator(): AchievementCalculator {
-        return AchievementCalculator()
+    fun provideAchievementMaster(): AchievementMaster {
+        return AchievementMaster()
     }
     
     @Provides
     @Singleton
-    fun provideInsightGenerator(): InsightGenerator {
-        return InsightGenerator()
+    fun provideInsightEngine(): InsightEngine {
+        return InsightEngine()
     }
     
+    @Provides
+    @Singleton
+    fun provideMomentumTracker(): MomentumTracker {
+        return MomentumTracker()
+    }
+    
+    @Provides
+    @Singleton
+    fun provideLiveAnalytics(): LiveAnalytics {
+        return LiveAnalytics()
+    }
+    
+    // Utility components
     @Provides
     @Singleton
     fun provideDataExporter(@ApplicationContext context: Context): DataExporter {
@@ -79,15 +101,26 @@ object DatabaseModule {
         return NotificationHelper(context)
     }
     
+    // Main repository with all advanced components
     @Provides
     @Singleton
     fun provideProductivityRepository(
         hourLogDao: HourLogDao,
         dailySummaryDao: DailySummaryDao,
         settingsDao: SettingsDao,
-        achievementCalculator: AchievementCalculator,
-        insightGenerator: InsightGenerator
+        achievementMaster: AchievementMaster,
+        insightEngine: InsightEngine,
+        momentumTracker: MomentumTracker,
+        liveAnalytics: LiveAnalytics
     ): ProductivityRepository {
-        return ProductivityRepository(hourLogDao, dailySummaryDao, settingsDao, achievementCalculator, insightGenerator)
+        return ProductivityRepository(
+            hourLogDao, 
+            dailySummaryDao, 
+            settingsDao, 
+            achievementMaster, 
+            insightEngine,
+            momentumTracker,
+            liveAnalytics
+        )
     }
 } 
