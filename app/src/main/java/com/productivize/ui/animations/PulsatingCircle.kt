@@ -14,16 +14,22 @@ import kotlinx.coroutines.delay
 @Composable
 fun PulsatingCircle(modifier: Modifier = Modifier, color: Color = Color(0xFF6200EE)) {
     val scale = remember { Animatable(1f) }
+
     LaunchedEffect(Unit) {
         while (true) {
-            scale.animateTo(1.8f, animationSpec = tween(1000))
-            scale.animateTo(1f, animationSpec = tween(1000))
+            // Use more efficient animation spec with better easing
+            scale.animateTo(1.8f, animationSpec = tween(800, easing = androidx.compose.animation.core.EaseInOut))
+            delay(200) // Small delay between animations for smoother performance
+            scale.animateTo(1f, animationSpec = tween(800, easing = androidx.compose.animation.core.EaseInOut))
         }
     }
+
     Canvas(modifier = modifier) {
+        // Memoize radius calculation
+        val radius = (size.minDimension / 2) * scale.value
         drawCircle(
             color = color.copy(alpha = 0.3f),
-            radius = (size.minDimension / 2) * scale.value
+            radius = radius
         )
     }
 } 

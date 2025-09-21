@@ -76,4 +76,38 @@ object PerformanceUtils {
     fun formatRating(value: Float): String {
         return String.format("%.1f", value)
     }
+
+    /**
+     * Performance monitoring for real-time updates
+     */
+    object PerformanceMonitor {
+        private var lastUpdateTime = 0L
+        private var updateCount = 0
+        private const val MAX_UPDATE_RATE = 60 // Max updates per second
+
+        fun recordUpdate() {
+            val currentTime = System.currentTimeMillis()
+            updateCount++
+
+            if (currentTime - lastUpdateTime > 1000) { // Log every second
+                val updatesPerSecond = updateCount
+                lastUpdateTime = currentTime
+                updateCount = 0
+
+                if (updatesPerSecond > MAX_UPDATE_RATE) {
+                    println("⚠️ High update rate detected: $updatesPerSecond updates/sec")
+                } else {
+                    println("✅ Smooth performance: $updatesPerSecond updates/sec")
+                }
+            }
+        }
+
+        fun isUpdateRateHealthy(): Boolean {
+            val currentTime = System.currentTimeMillis()
+            if (currentTime - lastUpdateTime > 1000) {
+                return true // No recent updates, considered healthy
+            }
+            return updateCount <= MAX_UPDATE_RATE
+        }
+    }
 } 

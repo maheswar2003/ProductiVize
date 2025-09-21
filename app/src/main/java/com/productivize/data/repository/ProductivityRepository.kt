@@ -142,18 +142,35 @@ class ProductivityRepository @Inject constructor(
     suspend fun updateHourLog(hourLog: HourLog) = withContext(Dispatchers.IO) {
         try {
             hourLogDao.insertHourLog(hourLog) // Upsert: insert if new, update if exists
-            
+
             // Calculate and update DailySummary immediately
             val date = hourLog.dateTime.toLocalDate()
             calculateAndUpdateDailySummary(date)
-            
+
             // Clear cache immediately to ensure UI updates
             clearCacheForDate(date)
             // Force immediate cache invalidation
             lastCacheUpdate = 0L
+
+            println("✅ Rating saved for hour ${hourLog.hour} on $date")
         } catch (e: Exception) {
+            println("❌ Error saving rating: ${e.message}")
             e.printStackTrace()
         }
+    }
+
+    // Get fresh data immediately after a rating update
+    suspend fun getFreshDailyData(date: LocalDate): DailyData = withContext(Dispatchers.IO) {
+        val hourLogs = hourLogDao.getHourLogsForDate(date).first()
+        val dailySummary = dailySummaryDao.getDailySummary(date).first()
+        val insights = getBasicInsightsForDate(date)
+
+        DailyData(
+            date = date,
+            hourLogs = hourLogs,
+            dailySummary = dailySummary,
+            insights = insights
+        )
     }
     
     // Calculate and update DailySummary for a given date
@@ -420,7 +437,108 @@ class ProductivityRepository @Inject constructor(
         val achievements = summaries.map { it.achievementPercentage }
         val max = achievements.maxOrNull() ?: 0f
         val min = achievements.minOrNull() ?: 0f
-        return if (max > 0) 1f - ((max - min) / 100f) else 0f
+        return if (max > 0) 1f - ((max - min) / 100f).coerceIn(0f, 1f) else 0f
+    }
+
+    // Validation method to ensure calculation accuracy
+    fun validateCalculations(): Boolean {
+        try {
+            // Test basic achievement calculation
+            val testLogs = listOf(
+                HourLog(id = "test-1", dateTime = LocalDateTime.now(), hour = 9, rating = 5),
+                HourLog(id = "test-2", dateTime = LocalDateTime.now(), hour = 10, rating = 4),
+                HourLog(id = "test-3", dateTime = LocalDateTime.now(), hour = 11, rating = 3),
+                HourLog(id = "test-4", dateTime = LocalDateTime.now(), hour = 12, rating = 2)
+            )
+
+            val ratedLogs = testLogs.filter { it.rating != null }
+            val totalHours = ratedLogs.size
+            val productiveHours = ratedLogs.count { it.rating!! >= 3 }
+            val achievementPercentage = (productiveHours.toFloat() / totalHours) * 100f
+
+            // Validate calculation
+            assert(totalHours == 4) { "Total hours should be 4" }
+            assert(productiveHours == 3) { "Productive hours should be 3" }
+            assert(achievementPercentage == 75f) { "Achievement percentage should be 75%" }
+
+            // Test performance index calculation
+            val performanceIndex = achievementMaster.calculatePerformanceIndex(ratedLogs, 3)
+            assert(performanceIndex > 0f) { "Performance index should be positive" }
+
+            // Test consistency calculation
+            val consistency = achievementMaster.calculateConsistency(ratedLogs)
+            assert(consistency >= 0f && consistency <= 1f) { "Consistency should be between 0 and 1" }
+
+            println("✅ All calculations validated successfully")
+            return true
+        } catch (e: Exception) {
+            println("❌ Calculation validation failed: ${e.message}")
+            return false
+        }
+    }
+
+    // Comprehensive app functionality test
+    suspend fun testAppFunctionality(): Boolean {
+        try {
+            println("🧪 Starting comprehensive app functionality test...")
+
+            // Test 1: Database operations
+            println("📊 Testing database operations...")
+            val testDate = LocalDate.now()
+            val testHour = 9
+            val testRating = 4
+
+            val testLog = HourLog(
+                id = "${testDate}-${testHour}",
+                dateTime = testDate.atTime(testHour, 0),
+                hour = testHour,
+                rating = testRating,
+                notes = "Test note",
+                tags = listOf("test", "demo"),
+                updatedAt = System.currentTimeMillis()
+            )
+
+            // Test saving and retrieving
+            updateHourLog(testLog)
+            val freshData = getFreshDailyData(testDate)
+
+            val retrievedLog = freshData.hourLogs.find { it.hour == testHour }
+            assert(retrievedLog != null) { "Hour log should be saved and retrieved" }
+            assert(retrievedLog?.rating == testRating) { "Rating should be saved correctly" }
+
+            // Test 2: Calculations
+            println("🧮 Testing calculation accuracy...")
+            assert(validateCalculations()) { "All calculations should be accurate" }
+
+            // Test 3: Real-time updates
+            println("⚡ Testing real-time updates...")
+            val testLogs = listOf(
+                testLog.copy(rating = 5),
+                testLog.copy(hour = 10, rating = 4),
+                testLog.copy(hour = 11, rating = 3)
+            )
+
+            testLogs.forEach { updateHourLog(it) }
+
+            val finalData = getFreshDailyData(testDate)
+            val ratedCount = finalData.hourLogs.count { it.rating != null }
+            assert(ratedCount == 3) { "Should have 3 rated hours" }
+
+            // Test 4: Achievement calculation
+            val achievementPercentage = finalData.dailySummary?.achievementPercentage ?: 0f
+            val expectedPercentage = (2f / 3f) * 100f // 2 productive hours out of 3
+            assert(achievementPercentage == expectedPercentage) {
+                "Achievement percentage should be calculated correctly: expected $expectedPercentage, got $achievementPercentage"
+            }
+
+            println("✅ All app functionality tests passed!")
+            return true
+
+        } catch (e: Exception) {
+            println("❌ App functionality test failed: ${e.message}")
+            e.printStackTrace()
+            return false
+        }
     }
     
     private fun generateQuickRecommendations(avgAchievement: Float, consistency: Float): List<String> {

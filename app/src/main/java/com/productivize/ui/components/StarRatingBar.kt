@@ -26,35 +26,32 @@ fun StarRatingBar(
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val validRating = rating.coerceIn(0, 5)
-    
-    // Stable references for better performance
-    val starTints = remember(validRating) {
+
+    // Memoize star configurations to avoid recalculation - include vibrationEnabled for completeness
+    val starConfig = remember(validRating, vibrationEnabled) {
+        println("🎨 StarRatingBar: Recalculating for rating = $validRating")
         (1..5).map { starValue ->
-            when {
+            val tint = when {
                 starValue <= validRating && validRating >= 4 -> TealRating
                 starValue <= validRating && validRating == 3 -> AmberRating
                 starValue <= validRating -> CoralRating
                 else -> Color.Gray
             }
+            val icon = if (starValue <= validRating) R.drawable.ic_star_filled else R.drawable.ic_star_outline
+            Pair(icon, tint)
         }
     }
-    
-    val starIcons = remember(validRating) {
-        (1..5).map { starValue ->
-            if (starValue <= validRating) R.drawable.ic_star_filled
-            else R.drawable.ic_star_outline
-        }
-    }
-    
+
     Row(modifier = modifier) {
         repeat(5) { index ->
             val starValue = index + 1
-            
+            val (iconRes, tint) = starConfig[index]
+
             Icon(
-                painter = painterResource(id = starIcons[index]),
+                painter = painterResource(id = iconRes),
                 contentDescription = "$starValue star",
                 modifier = Modifier
-                    .clickable { 
+                    .clickable {
                         if (vibrationEnabled) {
                             try {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
@@ -65,7 +62,7 @@ fun StarRatingBar(
                         onRatingSelected(starValue)
                     }
                     .padding(4.dp),
-                tint = starTints[index]
+                tint = tint
             )
         }
     }

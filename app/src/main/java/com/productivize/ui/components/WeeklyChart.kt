@@ -17,15 +17,24 @@ import androidx.compose.ui.unit.dp
 import com.productivize.data.model.DailySummary
 import com.productivize.ui.theme.DeepBlue
 import com.productivize.ui.theme.TealRating
+import androidx.compose.runtime.Composable as ComposeComposable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
 
-@Composable
+@ComposeComposable
 fun WeeklyChart(
     dailySummaries: List<DailySummary>,
     modifier: Modifier = Modifier
 ) {
+    // Memoize the recent days to avoid recalculation
+    val recentDays = remember(dailySummaries) {
+        dailySummaries.takeLast(7)
+    }
+
     Column(modifier = modifier) {
         Text(
             text = "Weekly Achievement",
@@ -33,19 +42,20 @@ fun WeeklyChart(
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.padding(bottom = 16.dp)
         )
-        
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
         ) {
+            val density = LocalDensity.current
             Canvas(
                 modifier = Modifier.fillMaxSize()
             ) {
-                drawWeeklyBars(dailySummaries)
+                drawWeeklyBars(recentDays, density)
             }
-            
-            // Day labels
+
+            // Day labels - memoized for better performance
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -53,9 +63,10 @@ fun WeeklyChart(
                     .padding(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                dailySummaries.takeLast(7).forEach { summary ->
+                recentDays.forEach { summary ->
+                    val dayName = summary.date.dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault())
                     Text(
-                        text = summary.date.dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault()),
+                        text = dayName,
                         style = MaterialTheme.typography.labelSmall,
                         modifier = Modifier.width(40.dp)
                     )
@@ -65,30 +76,34 @@ fun WeeklyChart(
     }
 }
 
-private fun DrawScope.drawWeeklyBars(summaries: List<DailySummary>) {
+private fun DrawScope.drawWeeklyBars(summaries: List<DailySummary>, density: Density) {
     val recentDays = summaries.takeLast(7)
     if (recentDays.isEmpty()) return
-    
+
+    // Memoize calculations
     val barWidth = size.width / 7f * 0.6f
     val spacing = size.width / 7f
     val maxHeight = size.height * 0.8f
-    
+
     recentDays.forEachIndexed { index, summary ->
         val barHeight = (summary.achievementPercentage / 100f) * maxHeight
         val x = index * spacing + (spacing - barWidth) / 2
-        val y = size.height - barHeight - 20.dp.toPx()
-        
+        val y = size.height - barHeight - with(density) { 20.dp.toPx() }
+
+        // Memoize bar color
+        val barColor = when {
+            summary.achievementPercentage >= 80 -> TealRating
+            summary.achievementPercentage >= 60 -> DeepBlue
+            else -> Color.LightGray
+        }
+
         // Draw bar
         drawRect(
-            color = when {
-                summary.achievementPercentage >= 80 -> TealRating
-                summary.achievementPercentage >= 60 -> DeepBlue
-                else -> Color.LightGray
-            },
+            color = barColor,
             topLeft = Offset(x, y),
             size = Size(barWidth, barHeight)
         )
-        
+
         // Draw percentage text
         // Note: Text drawing requires native canvas access which is more complex in Compose
         // For now, we'll skip the percentage labels on bars

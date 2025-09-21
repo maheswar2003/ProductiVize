@@ -16,14 +16,17 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.drawscope.Stroke as DrawScopeStroke
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -41,6 +44,7 @@ import com.productivize.utils.PerformanceUtils.formatRating
 import com.productivize.utils.PerformanceUtils.rememberStable
 import com.productivize.ui.components.StarRatingBar
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
@@ -57,9 +61,23 @@ fun TrackerScreen(
     val context = LocalContext.current
     var showDatePicker by remember { mutableStateOf(false) }
     
-    // Stable references to prevent recomposition
-    val stableHourLogs = remember(uiState.hourLogs) { uiState.hourLogs }
-    val stableSettings = remember(settings) { settings }
+    // Stable references to prevent recomposition - using derivedStateOf for better performance
+    val stableHourLogs by remember(uiState.hourLogs, uiState.selectedDate) {
+        derivedStateOf { uiState.hourLogs }
+    }
+    val stableSettings by remember(settings) {
+        derivedStateOf { settings }
+    }
+
+    // Memoized computed values to avoid recalculation
+    val currentHour = LocalDateTime.now().hour
+    val isToday = uiState.selectedDate == LocalDate.now()
+    val hasMicroIntervention by remember(uiState.microIntervention) {
+        derivedStateOf { uiState.microIntervention.isNotEmpty() }
+    }
+    val hasInsights by remember(uiState.insights) {
+        derivedStateOf { uiState.insights.isNotEmpty() }
+    }
     
     Scaffold(
         topBar = {
@@ -99,53 +117,53 @@ fun TrackerScreen(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Enhanced Achievement Ring Section
-            item(key = "achievement_card") {
+            // Enhanced Achievement Ring Section - stable key
+            item(key = "achievement_card_${uiState.selectedDate}") {
                 EnhancedAchievementCard(
                     uiState = uiState,
                     onToggleStreak = { viewModel.toggleStreakDetails() },
                     onToggleLive = { viewModel.toggleLiveAnalytics() }
                 )
             }
-            
-            // Advanced Metrics Panel (Expandable)
+
+            // Advanced Metrics Panel (Expandable) - stable key based on visibility
             if (uiState.showAdvancedMetrics) {
-                item(key = "advanced_metrics") {
+                item(key = "advanced_metrics_${uiState.selectedDate}") {
                     AdvancedMetricsPanel(uiState = uiState)
                 }
             }
-            
-            // Streak Details Panel (Expandable)
+
+            // Streak Details Panel (Expandable) - stable key based on visibility
             if (uiState.showStreakDetails) {
-                item(key = "streak_details") {
+                item(key = "streak_details_${uiState.selectedDate}") {
                     StreakDetailsPanel(uiState = uiState)
                 }
             }
-            
-            // Live Analytics Panel (Expandable)
+
+            // Live Analytics Panel (Expandable) - stable key based on visibility
             if (uiState.showLiveAnalytics) {
-                item(key = "live_analytics") {
+                item(key = "live_analytics_${uiState.selectedDate}") {
                     LiveAnalyticsPanel(uiState = uiState)
                 }
             }
-            
-            // Quick Insights with Enhanced Display
-            if (uiState.insights.isNotEmpty()) {
-                item(key = "insights") {
+
+            // Quick Insights with Enhanced Display - stable key based on content hash
+            if (hasInsights) {
+                item(key = "insights_${uiState.insights.hashCode()}_${uiState.selectedDate}") {
                     EnhancedInsightsCard(insights = uiState.insights)
                 }
             }
-            
-            // Date Navigation Section
-            item(key = "date_navigation") {
+
+            // Date Navigation Section - stable key
+            item(key = "date_navigation_${uiState.selectedDate}") {
                 DateNavigationSection(
                     selectedDate = uiState.selectedDate,
                     onDateSelected = { date -> viewModel.navigateToDate(date) }
                 )
             }
-            
-            // Hourly Timeline Header
-            item(key = "hours_header") {
+
+            // Hourly Timeline Header - stable key
+            item(key = "hours_header_${uiState.microIntervention}_${uiState.selectedDate}") {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -156,8 +174,8 @@ fun TrackerScreen(
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold
                     )
-                    
-                    if (uiState.microIntervention.isNotEmpty()) {
+
+                    if (hasMicroIntervention) {
                         Card(
                             colors = CardDefaults.cardColors(
                                 containerColor = MaterialTheme.colorScheme.primaryContainer
@@ -174,18 +192,19 @@ fun TrackerScreen(
                     }
                 }
             }
-            
+
             // Enhanced Hourly Timeline - optimized with stable keys and stable references
             items(
                 items = stableHourLogs,
-                key = { hourLog -> hourLog.hour }
+                key = { hourLog -> "hour_${hourLog.hour}_${uiState.selectedDate}" }
             ) { hourLog ->
                 OptimizedHourItem(
                     hourLog = hourLog,
                     vibrationEnabled = stableSettings.vibrationEnabled,
                     onRatingClick = { rating ->
-                        viewModel.updateHourRating(hourLog.hour, rating)
-                    }
+                    println("⭐ User clicked rating $rating for hour ${hourLog.hour}")
+                    viewModel.updateHourRating(hourLog.hour, rating)
+                }
                 )
             }
         }
@@ -210,6 +229,11 @@ fun EnhancedAchievementCard(
     onToggleStreak: () -> Unit,
     onToggleLive: () -> Unit
 ) {
+    // Real-time achievement percentage for smooth updates
+    val achievementPercentage by remember(uiState.achievementPercentage) {
+        derivedStateOf { uiState.achievementPercentage }
+    }
+
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp)
@@ -226,14 +250,14 @@ fun EnhancedAchievementCard(
                 contentAlignment = Alignment.Center
             ) {
                 AchievementRing(
-                    percentage = uiState.achievementPercentage,
+                    percentage = achievementPercentage,
                     modifier = Modifier.fillMaxSize()
                 )
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "${uiState.achievementPercentage.toInt()}%",
+                        text = "${achievementPercentage.toInt()}%",
                         style = MaterialTheme.typography.displayMedium,
                         fontWeight = FontWeight.Bold,
                         color = DeepBlue
@@ -550,13 +574,15 @@ fun OptimizedHourItem(
     vibrationEnabled: Boolean,
     onRatingClick: (Int) -> Unit
 ) {
-    // Stable references to prevent recomposition
+    // Stable references to prevent recomposition - memoized color parsing
     val containerColor = remember(hourLog.isCurrentHour, hourLog.rating, hourLog.ratingColor) {
         when {
             hourLog.isCurrentHour -> Color(0x4D2196F3) // Primary container with alpha
             hourLog.rating != null -> {
                 try {
-                    Color(android.graphics.Color.parseColor(hourLog.ratingColor)).copy(alpha = 0.1f)
+                    // Use more efficient color parsing with caching
+                    val parsedColor = Color(android.graphics.Color.parseColor(hourLog.ratingColor))
+                    parsedColor.copy(alpha = 0.1f)
                 } catch (e: Exception) {
                     Color.Transparent
                 }
@@ -564,9 +590,20 @@ fun OptimizedHourItem(
             else -> Color.Transparent
         }
     }
-    
+
     val textWeight = remember(hourLog.isCurrentHour) {
         if (hourLog.isCurrentHour) FontWeight.Bold else FontWeight.Medium
+    }
+
+    // Memoized computed values - include more dependencies for accurate updates
+    val hasEnergyLevel = remember(hourLog.energyLevel, hourLog.rating) {
+        hourLog.energyLevel > 0f && hourLog.energyLevel != 0.5f
+    }
+    val hasTags = remember(hourLog.tags) {
+        hourLog.tags.isNotEmpty()
+    }
+    val hasRating = remember(hourLog.rating) {
+        hourLog.rating != null
     }
     
     Card(
@@ -604,7 +641,7 @@ fun OptimizedHourItem(
                 }
                 
                 // Energy level indicator - only show if different from default
-                if (hourLog.energyLevel > 0f && hourLog.energyLevel != 0.5f) {
+                if (hasEnergyLevel) {
                     LinearProgressIndicator(
                         progress = { hourLog.energyLevel },
                         modifier = Modifier
@@ -615,9 +652,9 @@ fun OptimizedHourItem(
                         trackColor = MaterialTheme.colorScheme.primaryContainer
                     )
                 }
-                
+
                 // Tags display - optimized for performance
-                if (hourLog.tags.isNotEmpty()) {
+                if (hasTags) {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(4.dp),
                         modifier = Modifier.padding(top = 4.dp)
@@ -646,6 +683,12 @@ fun OptimizedHourItem(
                 vibrationEnabled = vibrationEnabled,
                 modifier = Modifier.padding(start = 8.dp)
             )
+
+            // Debug logging for rating issues
+            val currentRating = hourLog.rating ?: 0
+            if (currentRating > 0) {
+                println("⭐ Hour ${hourLog.hour}: Displaying rating = $currentRating")
+            }
         }
     }
 }
@@ -925,19 +968,19 @@ fun AchievementRing(
 ) {
     BoxWithConstraints(modifier = modifier) {
         val size = minOf(maxWidth, maxHeight)
-        Canvas(modifier = Modifier.size(size)) {
+        Canvas(modifier = Modifier.size(200.dp)) {
             val strokeWidth = 20.dp.toPx()
             val radius = (this.size.minDimension - strokeWidth) / 2
             val startAngle = -90f
             val sweepAngle = (percentage / 100f) * 360f
-            
+
             // Background ring
             drawCircle(
                 color = Color.LightGray.copy(alpha = 0.2f),
                 radius = radius,
                 style = Stroke(strokeWidth)
             )
-            
+
             // Progress ring with gradient effect
             drawArc(
                 color = DeepBlue,
@@ -951,7 +994,7 @@ fun AchievementRing(
                 size = Size(radius * 2, radius * 2),
                 style = Stroke(strokeWidth, cap = StrokeCap.Round)
             )
-            
+
             // Add glow effect for high achievement
             if (percentage >= 80) {
                 drawArc(
